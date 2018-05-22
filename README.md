@@ -53,6 +53,37 @@ Their total raqueteering stats will be kept also year to date and in aggregate. 
 
 Site will include a forum with characters, maybe a casino: blackjack, keno, where the user can gamble with their income and possibly earn clients.
 
+The Math and The Data:
+
+Anything there will be an instance of, I will need to capture in a form.  Looking like there will be a client controller that controls the clients of each user.  That means I need to access a user's cleint list with dot notation then loop it and put it through functions.
+
+The functions that generate sports bets and lottery numbers for the clients probably have to be done in ruby?  Maybe javascript?
+
+The user, in their profile, will have a button appear where they can check their sports action and number action it's these buttons that will generate the functions that create the wagers for the clients.  Have the bets stagger in, so if they have 20 clients, then if they check their sports action early, then only one or two clients have their bets in, the more often they come back, the more bets that have been placed by more clients.
+
+When clients are generated, they also need to be made a user of the site and I need to collect these usernames and passwords in a directory that can be indexed with a search.  Clients hang out in the forums and the user has to sometimes chase them down and confront them to get paid.
+
+Clients will also be an object that has key value pairs.
+
+First Name: 
+Last Name:
+City:
+State:
+Type:
+Money Avail:
+Wager Range:
+Bets On: 
+Rep/Credit Rating: 
+Affiliation: 
+
+User can accept a client from the client pool or not.  Clients should be mined by the community in some way, maybe by post total in the forum, watching ads, or maybe purchasing a client directly.  It is competitive atmosphere to get a client.  User's have to interact with possible clients on the forums and try to get them onto their sheet, so users start building their client sheets up and they start backing more and more wagers and their income goes up, as their income goes up they advance in level.  Keep building out levels.
+
+User/Client relationship:
+
+Any User that has been bought maybe should have an infinity bankroll, but they pay for the type and users can not lose the paid clients.
+
+The quality of mined clients should depend on something, predictions?  Earnings?  A client is mined after so much community work: post count, wager count, etc.  After the work is completed, then the predictor is checked to see where it is - the corresponding client is generated.  Once the client is generated, they are a free agent, their affiliation is none.  Community members will compete for their business. 
+
 
 
 
