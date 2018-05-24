@@ -75,6 +75,8 @@ Wager Range:
 Bets On: 
 Rep/Credit Rating: 
 Affiliation: 
+wagerType: [An array that will hold the proper ratio of bet types]
+descr: A string that is a rating describing this clients action.
 
 User can accept a client from the client pool or not.  Clients should be mined by the community in some way, maybe by post total in the forum, watching ads, or maybe purchasing a client directly.  It is competitive atmosphere to get a client.  User's have to interact with possible clients on the forums and try to get them onto their sheet, so users start building their client sheets up and they start backing more and more wagers and their income goes up, as their income goes up they advance in level.  Keep building out levels.
 
@@ -83,6 +85,51 @@ User/Client relationship:
 Any User that has been bought maybe should have an infinity bankroll, but they pay for the type and users can not lose the paid clients.
 
 The quality of mined clients should depend on something, predictions?  Earnings?  A client is mined after so much community work: post count, wager count, etc.  After the work is completed, then the predictor is checked to see where it is - the corresponding client is generated.  Once the client is generated, they are a free agent, their affiliation is none.  Community members will compete for their business. 
+
+Sports Betting:
+
+There will be a page where the odds will be displayed, also a visible admin form where odds can be updated.  This is the sites sports book.  It will have a button where the user can see sports betting stats, how much their book is up and a win/loss statement for each player.  Each day their is a +/- for the sports book. And then there is a summation of all the "+/-"'s that the book has.
+
+Bets are generated when the user clicks on the button to view them.  If it is more than four hours before games start then let only one wager appear.  Wagers should stagger in, so the more the user returns to the site, the more action they will have.  We don't want to dump all the action in one shot, do we?  They should have to come back three times to get maximum action.
+
+Generated bets are functions that randmoly assign bets and amounts to their clients according to that clients parameters.  So the function needs access to the users client list.  If it is early, the function will only randomly select one client, as it gets later, more clients get selected.  When a client gets selected.  First an amount is generated, then the type of wager is selected, then the teams needed to fill the wagers are randomly selected.  Teams need to be invovled in games that haven't started yet.  Once games have started they need to be removed from the team pool so they can not be selected.  There needs to be an array wagerOptions that holds all available wager options either totals or sides.  If a bettor tries to enter a 6 team parlay and there are only 5 wagerOptions then the user needs to be told that.
+
+Clients will need to have:
+
+wagerType: [An array that will hold the proper ratio of bets]
+descr: A string that is a rating describing this clients action.
+
+Clients will have a wager description which will tell the user what the client likes to bet: Straight Only, Straight and Exotics, mostly Exotics.
+
+Once action is entered, scores will have to be entered when the games are over and user sports books will have to be updated.  For scoring the games I will need the scores and the spread for NFL, NBA, CFB, CBB.  MLB and NHL.  A function will determine which score is higher when the spread points are subtracted from the favorites score.  A winner, loser, or push is marked for each team in a game.  Once every team has been denoted one of the three results then the users sports book is graded for winners and losers.  For straight bets the function is straight forward, a simple if statement asking if the teams denotation is as a winner, loser, or push.  If a loser then the sports book wins 110% of the bet value, if winner then the sports book loses 100% of the bet value.
+
+For parlays, have to loop through the teams and for each team ask if they are denoted a winner, loser, or a push.  Each one is put in their own array, actually once a loser is detected the loop can break, we'll see.  Then once those arrays are filled we have a set of if statements wrapped around a parent if statement that says if (the losing array == 0).  The inner if statements will be all the possible win options.
+
+For Reverses, also need to loop through the teams and separarte winners, losers, and pushes.  Then have if statements for result options.
+
+In all these functions either a Clients account is credited/debited or the user's sports book is for every wager.
+
+Need functions that generate the various number of bets possible.  So, if the bet is a parlay a function will decide if it is a two team parlay or up to a ten team parlay, then the bet is filled with a random selection of the teams.  The function will also have to check to see how many wagerOptions are possible.  The number of teams in the exotic bets can't exceed the number of wagerOptions.
+
+Need a function that combs over the User's clients and selects sports bettors.
+Need a function that takes selected clients and generates sports wagers for them.
+Need a function that grades the wagers and debits/credits the accounts.
+
+Bet Types:
+
+straight
+parlay: 2 - 10 teams
+reverse: 2 - 4 teams
+teasers: 2 - 5 teams
+
+Scoring teasers will be tricky, all wagerOptions will need a spread denotation and a teaser denotation so when teasers are graded this team has a grade for that.  wagerOptions will need to be graded for every teaser option so when the teaser function is called it can look at the teaser grade.
+
+The forms:
+
+I need a form for all the sports games.  Will it be game by game?  Have to think about that.  Then I need to update that form with the scores.  Once scores are in, wagerOptions need to be graded for spread, teaser, and moneyline bets, so all teams wil have 6 grades for the six possible wager types they can be in.
+
+Might need two wagerOption pools: Money Line and Spread because Money Line does not have a teaser and do we want to mix Money Line and Spread on a parlay?
+
 
 
 
