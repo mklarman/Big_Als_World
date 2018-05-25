@@ -132,6 +132,20 @@ Might need two wagerOption pools: Money Line and Spread because Money Line does 
 
 
 
+Money line parlays:
+
+for favorites: divide 100 by the absolute value of the line: 100/var
+
+for underdogs: divide the line by 100: var/100
+
+add 1 to all results then multiply all results together.  That is the odds of hitting the parlay.
+
+Games are entered.  The betting data will display in the sports book so it can be viewed, separated by sport.  When scores are entered, teams have to be graded ATS as well as all the teaser spreads.  Teams will be objects with five properties in spread sports only, no need in MLB and NHL.  When a team is graded it will also be graded for all teasers, so if it is in a teaser, the loop will look at the 3 team teaser score for all teams in a 3 team teaser.
+
+
+
+
+
 
 
 

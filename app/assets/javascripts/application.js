@@ -82,3 +82,132 @@ function createClient(){
 	allClients.push(nextClient)
 
 }
+
+function parlayCalc(spread1, spread2, spread3, amount){
+
+	if(spread1 < 0){
+
+		var parOdds1 = 100/Math.abs(spread1) + 1
+	
+	}else{
+
+		var parOdds1 = spread1/100 + 1
+	}
+
+	if(spread2 < 0){
+
+		var parOdds2 = 100/Math.abs(spread2) + 1
+	
+	}else{
+
+		var parOdds2 = spread2/100 + 1
+	}
+
+	if(spread3 < 0){
+
+		var parOdds3 = 100/Math.abs(spread1) + 1
+	
+	}else{
+
+		var parOdds3 = spread3/100 + 1
+	}
+
+	var totalOdds = parOdds1 * parOdds2 * parOdds3
+
+	var payout = amount * totalOdds
+
+	return [totalOdds, amount, payout]
+}
+
+function gradeTeams(fav, dog, spread, favScore, dogScore){
+
+	if(favScore - spread > dogScore){
+
+		dog.straight = "loss"
+		fav.straight = "win"
+		fav.twoTeam = "win"
+		fav.threeTeam = "win"
+		fav.fiveTeam = "win"
+	}else if(favScore - spread == dogScore){
+
+		dog.straight = "push"
+		fav.straight = "push"
+		fav.twoTeam = "win"
+		fav.threeTeam = "win"
+		fav.fiveTeam = "win"
+		dog.twoTeam = "win"
+		dog.threeTeam = "win"
+		dog.fiveTeam = "win"
+
+	}else{
+
+		dog.straight = "win"
+		fav.straight = "loss"
+		
+		if(favScore - spread + 6 > dogScore){
+
+			fav.twoTeam = "win"
+			fav.fiveTeam = "win"
+	
+
+		}else if(favScore - spread + 6 == dogScore){
+
+			fav.twoTeam = "push"
+			fav.fiveTeam = "push"
+		
+		}else{
+
+			fav.twoTeam = "loss"
+			fav.fiveTeam = "loss"
+
+		}
+
+		if(favScore - spread + 10 > dogScore){
+
+			fav.threeTeam = "win"
+		
+		}else if (favScore - spread + 10 == dogScore){
+
+			fav.threeTeam = "push"
+		
+		}else{
+
+			fav.threeTeam = "loss"
+		}
+
+		if(dogScore + spread + 6 > favScore){
+
+			dog.twoTeam = "win"
+			dog.fiveTeam = "win"
+		
+		}else if (dogScore + spread + 6 == favScore){
+
+			dog.twoTeam = "push"
+			dog.fiveTeam = "push"
+		
+		}else{
+
+			dog.twoTeam = "loss"
+			dog.fiveTeam = "loss"
+		}
+
+		if(dogScore + spread + 10 > favScore){
+
+			dog.threeTeam = "win"
+		
+		}else if(dogScore + spread + 10 == favScore){
+
+			dog.threeTeam = "push"
+		
+		}else{
+
+			dog.threeTeam = "loss"
+		}
+
+	}
+
+	return [fav, dog]
+
+}
+
+
