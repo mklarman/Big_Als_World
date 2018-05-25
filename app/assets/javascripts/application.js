@@ -210,4 +210,131 @@ function gradeTeams(fav, dog, spread, favScore, dogScore){
 
 }
 
+var Celtics = new CreateTeam("Boston", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+nbaTeams.push(Celtics)
+
+var Hawks = new CreateTeam("Atlanta", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+nbaTeams.push(Hawks)
+
+var Nets = new CreateTeam("Brooklyn", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+nbaTeams.push(Nets)
+
+var Hornets = new CreateTeam("Charlotte", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+nbaTeams.push(Hornets)
+
+var Bulls = new CreateTeam("Chicago", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+nbaTeams.push(Bulls)
+
+var Cavaliers = new CreateTeam("Cleveland", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+nbaTeams.push(Cavaliers)
+
+var Mavericks = new CreateTeam("Dallas", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+nbaTeams.push(Mavericks)
+
+var Nuggets = new CreateTeam("Denver", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+nbaTeams.push(Nuggets)
+
+var Pistons = new CreateTeam("Detroit", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+nbaTeams.push(Pistons)
+
+var Warriors = new CreateTeam("Golden State", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+nbaTeams.push(Warriors)
+
+var Rockets = new CreateTeam("Houston", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+nbaTeams.push(Rockets)
+
+var Pacers = new CreateTeam("Indiana", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+nbaTeams.push(Pacers)
+
+var Clippers = new CreateTeam("Los Angeles", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+nbaTeams.push(Clippers)
+
+var Lakers = new CreateTeam("Los Angeles", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+nbaTeams.push(Lakers)
+
+var Grizzlies = new CreateTeam("Memphis", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+nbaTeams.push(Grizzlies)
+
+var Heat = new CreateTeam("Miami", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+nbaTeams.push(Heat)
+
+var Bucks = new CreateTeam("Milwaukee", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+nbaTeams.push(Bucks)
+
+var Timberwolves = new CreateTeam("Minnesota", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+nbaTeams.push(Timberwolves)
+
+var Pelicans = new CreateTeam("New Orleans", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+nbaTeams.push(Pelicans)
+
+var Knicks = new CreateTeam("New York", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+nbaTeams.push(Knicks)
+
+var Thunder = new CreateTeam("Oklahoma City", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+nbaTeams.push(Thunder)
+
+var Magic = new CreateTeam("Orlando", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+nbaTeams.push(Magic)
+
+var Sixers = new CreateTeam("Philadelphia", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+nbaTeams.push(Sixers)
+
+var Suns = new CreateTeam("Phoenix", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+nbaTeams.push(Suns)
+
+var Blazers = new CreateTeam("Portland", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+nbaTeams.push(Blazers)
+
+var Kings = new CreateTeam("Sacramento", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+nbaTeams.push(Kings)
+
+var Spurs = new CreateTeam("San Antonio", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+nbaTeams.push(Spurs)
+
+var Raptors = new CreateTeam("Toronto", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+nbaTeams.push(Raptors)
+
+var Jazz = new CreateTeam("Utah", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+nbaTeams.push(Jazz)
+
+var Wizards = new CreateTeam("Washington", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+nbaTeams.push(Wizards)
+
+
+
+for(i=0; i<nbaTeams.length; i++){
+
+	nbaTeams[i].spread = "N/A"
+}
+
+function createMatchup(fav, dog, spread){
+
+	var gameMatchup = fav.city + " " + "-" + spread + " " + dog.city
+
+	fav.opp = dog
+	fav.spread = 0 - spread
+	dog.opp = fav
+	dog.spread = spread
+
+	return [gameMatchup, fav.opp, fav.spread, dog.opp, dog.spread]
+}
+
+
+
+function CreateTeam (city, sport, startTime, opp, spread, score, oppScore, straight, twoTeam, threeTeam, fiveTeam){
+
+	this.city = city
+	this.sport = sport
+	this.startTime = startTime
+	this.opp = opp
+	this.spread = spread
+	this.score = score
+	this.oppScore = oppScore
+	this.straight = straight
+	this.twoTeam = twoTeam
+	this.threeTeam = threeTeam
+	this.fiveTeam = fiveTeam
+
+}
+
 

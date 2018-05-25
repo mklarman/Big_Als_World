@@ -142,6 +142,51 @@ add 1 to all results then multiply all results together.  That is the odds of hi
 
 Games are entered.  The betting data will display in the sports book so it can be viewed, separated by sport.  When scores are entered, teams have to be graded ATS as well as all the teaser spreads.  Teams will be objects with five properties in spread sports only, no need in MLB and NHL.  When a team is graded it will also be graded for all teasers, so if it is in a teaser, the loop will look at the 3 team teaser score for all teams in a 3 team teaser.
 
+Clients belong to Users, bets belong to clients.  Need a form for each type of bet.
+
+All teams will need to be objects with the following properties:
+
+city:
+sport:
+startTime:
+opp:
+spread:
+score:
+oppScore
+
+Included in the team objects will be functions that will calculate all ATS results for all bets(straight and teasers), this will flag each team as winners or losers.  Each team should have a teaser spread calculated for it from the jump.  Need two different contrsuctors, one for moneyline sports and one for spread.
+
+Client Objects
+
+fname:
+lname:
+state:
+bankroll:
+betsOn:
+wagerAmount:
+wagerCount
+tendency:
+
+
+Team OBJ
+
+teamName:
+City:
+startTime:
+opp:
+spread:
+twoTeamSpread:
+threeTeamSpread:
+fiveTeamSpread:
+score:
+opp:Score
+straightResult
+twoTeamResult:
+threeTeamResult:
+fiveTeamResult:
+
+Need to be able to generate the wagers and fill them and score them.
+
 
 
 
