@@ -31,6 +31,44 @@ var creditRating = ["No Pay", "Slow Pay", "Solid Pay", "Lock Pay"]
 var affiliation = false
 
 
+function pickOneTeam(){
+
+	var team = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
+
+}
+
+function pickTwoTeams(){
+
+	var team1 = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
+	var team2 = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
+}
+
+function pickThreeTeams(){
+
+	var team1 = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
+	var team2 = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
+	var team3 = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
+}
+
+function pickFourTeams(){
+
+	var team1 = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
+	var team2 = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
+	var team3 = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
+	var team4 = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
+}
+
+function pickFiveTeams(){
+
+	var team1 = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
+	var team2 = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
+	var team3 = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
+	var team4 = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
+	var team5 = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
+}
+
+
+
 function ClientObj(){
 
 	this.firstName = fnames[Math.floor(Math.random() * fnames.length)]
@@ -87,11 +125,48 @@ function ClientObj(){
 
 	this.genWager = function(){
 
-		var newWager = {
+		var team1 = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
+		var team2 = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
+		var team3 = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
+		var team4 = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
+		var team5 = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
 
-			category: this.betOptions[Math.floor(Math.random() * this.betOptions.length)],
-			type: this.possWager[Math.floor(Math.random() * this.possWager.length)],
-			amount: this.betAmounts[Math.floor(Math.random() * this.betAmounts.length)]
+		newWager.category = this.betOptions[Math.floor(Math.random() * this.betOptions.length)]
+		newWager.type = this.possWager[Math.floor(Math.random() * this.possWager.length)]
+		newWager.amount = this.betAmounts[Math.floor(Math.random() * this.betAmounts.length)]
+		newWager.teams = []			
+
+
+		
+
+		if(newWager.type == "straight"){
+
+			newWager.teams.push(team1)
+				
+		}else if(newWager.type == "2 team parlay" || newWager.type == "2 team teaser" || newWager.type == "2 team reverse"){
+
+			newWager.teams.push(team1)
+			newWager.teams.push(team2)
+				
+		}else if(newWager.type == "3 team parlay" || newWager.type == "3 team teaser" || newWager.type == "3 team reverse"){
+
+			newWager.teams.push(team1)
+			newWager.teams.push(team2)
+			newWager.teams.push(team3)
+				
+		}else if(newWager.type == "4 team parlay" || newWager.type == "4 team teaser" || newWager.type == "4 team reverse"){
+
+			newWager.teams.push(team1)
+			newWager.teams.push(team2)
+			newWager.teams.push(team3)
+			newWager.teams.push(team4)
+		}else{
+
+			 newWager.teams.push(team1)
+			 newWager.teams.push(team2)
+			 newWager.teams.push(team3)
+			 newWager.teams.push(team4)
+			 newWager.teams.push(team5)
 		}
 
 		this.sportsBets.push(newWager)
@@ -101,7 +176,6 @@ function ClientObj(){
 	
 
 }
-
 
 function randomBR(min,max){
     
