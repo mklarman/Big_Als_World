@@ -31,57 +31,130 @@ var creditRating = ["No Pay", "Slow Pay", "Solid Pay", "Lock Pay"]
 var affiliation = false
 
 
+function ClientObj(){
+
+	this.firstName = fnames[Math.floor(Math.random() * fnames.length)]
+	this.lastName = lnames[Math.floor(Math.random() * lnames.length)]
+	this.state = stateNames[Math.floor(Math.random() * stateNames.length)]
+	this.stakes = clientTypes[Math.floor(Math.random() * clientTypes.length)]
+	this.betOptions = ["Sports"]
+	this.betStyle = betStyles[Math.floor(Math.random() * betStyles.length)]
+
+	if(this.stakes == "Small Timer"){
+
+		this.betAmounts = betsFor1
+	
+	}else if(this.stakes == "Pay Dumper"){
+
+		this.betAmounts = betsFor2
+	
+	}else{
+
+		this.betAmounts = betsFor3
+	}
+
+	if(this.stakes == clientTypes[0]){
+
+		this.bankroll = randomBR(bankroll1[0], bankroll1[1])
+	
+	}else if(this.stakes == clientTypes[1]){
+
+		this.bankroll = randomBR(bankroll2[0], bankroll2[1])
+	
+	}else{
+
+		this.bankroll = randomBR(bankroll3[0], bankroll3[1])
+	}
+
+	if(this.betStyle == betStyles[0]){
+
+		this.possWager = ["straight"]
+	
+	}else if(this.betStyle == betStyles[1]){
+
+		this.possWager = ["straight", "2 team parlay", "straight", "straight", "3 team parlay", "straight", "straight", "straight"]
+	
+	}else if(this.betStyle == betStyles[2]){
+
+		this.possWager = ["straight", "2 team parlay", "straight", "3 team parlay", "straight", "4 team parlay", "straight", "5 team parlay", "straight", "2 team teaser", "straight", "3 team teaser", "straight", "4 team teaser", "straight", "5 team teaser", "straight", "2 team reverse", "straight", "3 team reverse", "straight", "4 team reverse", "straight"]
+	
+	}else{
+
+		this.possWager = ["2 team parlay", "3 team parlay", "4 team parlay", "5 team parlay", "2 team teaser", "3 team teaser", "4 team teaser", "5 team teaser", "2 team reverse", "3 team reverse", "4 team reverse"]
+	}
+
+	this.sportsBets = []
+
+	this.genWager = function(){
+
+		var newWager = {
+
+			category: this.betOptions[Math.floor(Math.random() * this.betOptions.length)],
+			type: this.possWager[Math.floor(Math.random() * this.possWager.length)],
+			amount: this.betAmounts[Math.floor(Math.random() * this.betAmounts.length)]
+		}
+
+		this.sportsBets.push(newWager)
+
+	}
+
+	
+
+}
+
 
 function randomBR(min,max){
     
     return Math.floor(Math.random()*(max-min+1)+min);
 }
 
-function Client(first, last, state, bankroll, bets, type, pref, risk, affiliation){
-
-	this.firstName = first
-	this.lastName = last
-	this.state = state
-	this.bankroll = bankroll
-	this.bets = bets
-	this.type = type
-	this.pref = pref
-	this.risk = risk
-	this.affiliation = affiliation
 
 
-}
+// function Client(first, last, state, bankroll, bets, type, pref, risk, affiliation){
 
-function createClient(){
+// 	this.firstName = first
+// 	this.lastName = last
+// 	this.state = state
+// 	this.bankroll = bankroll
+// 	this.bets = bets
+// 	this.type = type
+// 	this.pref = pref
+// 	this.risk = risk
+// 	this.affiliation = affiliation
 
-	var pickFname = fnames[Math.floor(Math.random() * fnames.length)];
-	var pickLname = lnames[Math.floor(Math.random() * lnames.length)];
-	var pickState = stateNames[Math.floor(Math.random() * stateNames.length)];
-	var kindOfClient = clientTypes[Math.floor(Math.random() * clientTypes.length)];
-	var clientPref = kinds[Math.floor(Math.random() * kinds.length)];
-	var clientRat = creditRating[Math.floor(Math.random() * creditRating.length)];
 
-	if(kindOfClient == "Small Timer"){
+// }
 
-		var bankAmount = randomBR(bankroll1[0], bankroll1[1])
-		var betAmounts = betsFor1
+// function createClient(){
+
+// 	var pickFname = fnames[Math.floor(Math.random() * fnames.length)];
+// 	var pickLname = lnames[Math.floor(Math.random() * lnames.length)];
+// 	var pickState = stateNames[Math.floor(Math.random() * stateNames.length)];
+// 	var kindOfClient = clientTypes[Math.floor(Math.random() * clientTypes.length)];
+// 	var clientPref = kinds[Math.floor(Math.random() * kinds.length)];
+// 	var clientRat = creditRating[Math.floor(Math.random() * creditRating.length)];
+
+// 	if(kindOfClient == "Small Timer"){
+
+// 		var bankAmount = randomBR(bankroll1[0], bankroll1[1])
+// 		var betAmounts = betsFor1
 	
-	}else if(kindOfClient == "Pay Dumper"){
+// 	}else if(kindOfClient == "Pay Dumper"){
 
-		var bankAmount = randomBR(bankroll2[0], bankroll2[1])
-		var betAmounts = betsFor2
+// 		var bankAmount = randomBR(bankroll2[0], bankroll2[1])
+// 		var betAmounts = betsFor2
 	
-	}else{
+// 	}else{
 
-		var bankAmount = randomBR(bankroll3[0], bankroll3[1])
-		var betAmounts = betsFor3
-	}
+// 		var bankAmount = randomBR(bankroll3[0], bankroll3[1])
+// 		var betAmounts = betsFor3
+// 	}
 
-	var nextClient = new Client(fnames[pickFname], lnames[pickLname], stateNames[pickState], bankAmount, betAmounts, clientTypes[kindOfClient], kinds[clientPref], creditRating[clientRat], false)
+// 	var nextClient = new Client(fnames[pickFname], lnames[pickLname], stateNames[pickState], bankAmount, betAmounts, clientTypes[kindOfClient], kinds[clientPref], creditRating[clientRat], false)
 
-	allClients.push(nextClient)
+// 	allClients.push(nextClient)
 
-}
+// }
 
 function parlayCalc(spread1, spread2, spread3, amount){
 

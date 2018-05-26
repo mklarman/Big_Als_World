@@ -164,8 +164,24 @@ state:
 bankroll:
 betsOn:
 wagerAmount:
-wagerCount
+wagerCount:
 tendency:
+getType:
+getAmount:
+getTeams:
+fillWager: function(){ 
+
+var clientWager = {type: getType,
+ amount: getAmount,
+ teams: getTeams		
+ }
+ this.sportsBet.push(clientWager)
+
+}
+sportsBets: []
+lotteryBets:[]
+
+
 
 
 Team OBJ
@@ -186,6 +202,16 @@ threeTeamResult:
 fiveTeamResult:
 
 Need to be able to generate the wagers and fill them and score them.
+
+The client object has to hold all the functions for generating a wager:
+
+Step 1, select the type of wager.
+Step 2, select an amount.
+Step 3, select the teams.
+
+Wagers are objects that have amounts, types, and teams.  Wagers must be cleared after they are scored.
+
+getWager: 
 
 
 
