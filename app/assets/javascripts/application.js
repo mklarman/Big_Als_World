@@ -67,8 +67,6 @@ function pickFiveTeams(){
 	var team5 = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
 }
 
-
-
 function ClientObj(){
 
 	this.firstName = fnames[Math.floor(Math.random() * fnames.length)]
@@ -171,9 +169,7 @@ function ClientObj(){
 
 		this.sportsBets.push(newWager)
 
-	}
-
-	
+	}	
 
 }
 
@@ -183,6 +179,503 @@ function randomBR(min,max){
 }
 
 
+function parlayCalc2(spread1, spread2, amount){
+
+	if(spread1 < 0){
+
+		var parOdds1 = 100/Math.abs(spread1) + 1
+	
+	}else{
+
+		var parOdds1 = spread1/100 + 1
+	}
+
+	if(spread2 < 0){
+
+		var parOdds2 = 100/Math.abs(spread2) + 1
+	
+	}else{
+
+		var parOdds2 = spread2/100 + 1
+	}
+
+	var totalOdds = parOdds1 * parOdds2
+
+	var payout = amount * totalOdds
+
+	return [totalOdds, amount, payout]
+
+}
+
+function parlayCalc3(spread1, spread2, spread3, amount){
+
+	if(spread1 < 0){
+
+		var parOdds1 = 100/Math.abs(spread1) + 1
+	
+	}else{
+
+		var parOdds1 = spread1/100 + 1
+	}
+
+	if(spread2 < 0){
+
+		var parOdds2 = 100/Math.abs(spread2) + 1
+	
+	}else{
+
+		var parOdds2 = spread2/100 + 1
+	}
+
+	if(spread3 < 0){
+
+		var parOdds3 = 100/Math.abs(spread3) + 1
+	
+	}else{
+
+		var parOdds3 = spread3/100 + 1
+	}
+
+	var totalOdds = parOdds1 * parOdds2 * parOdds3
+
+	var payout = amount * totalOdds
+
+	return [totalOdds, amount, payout]
+}
+
+function parlayCalc4(spread1, spread2, spread3, spread4, amount){
+
+	if(spread1 < 0){
+
+		var parOdds1 = 100/Math.abs(spread1) + 1
+	
+	}else{
+
+		var parOdds1 = spread1/100 + 1
+	}
+
+	if(spread2 < 0){
+
+		var parOdds2 = 100/Math.abs(spread2) + 1
+	
+	}else{
+
+		var parOdds2 = spread2/100 + 1
+	}
+
+	if(spread3 < 0){
+
+		var parOdds3 = 100/Math.abs(spread3) + 1
+	
+	}else{
+
+		var parOdds3 = spread3/100 + 1
+	}
+
+	if(spread4 < 0){
+
+		var parOdds4 = 100/Math.abs(spread4) + 1
+	
+	}else{
+
+		var parOdds4 = spread4/100 + 1
+	}
+
+	var totalOdds = parOdds1 * parOdds2 * parOdds3 * parOdds4
+
+	var payout = amount * totalOdds
+
+	return [totalOdds, amount, payout]
+}
+
+function parlayCalc5(spread1, spread2, spread3, spread4, spread5, amount){
+
+	if(spread1 < 0){
+
+		var parOdds1 = 100/Math.abs(spread1) + 1
+	
+	}else{
+
+		var parOdds1 = spread1/100 + 1
+	}
+
+	if(spread2 < 0){
+
+		var parOdds2 = 100/Math.abs(spread2) + 1
+	
+	}else{
+
+		var parOdds2 = spread2/100 + 1
+	}
+
+	if(spread3 < 0){
+
+		var parOdds3 = 100/Math.abs(spread3) + 1
+	
+	}else{
+
+		var parOdds3 = spread3/100 + 1
+	}
+
+	if(spread4 < 0){
+
+		var parOdds4 = 100/Math.abs(spread4) + 1
+	
+	}else{
+
+		var parOdds4 = spread4/100 + 1
+	}
+
+	if(spread5 < 0){
+
+		var parOdds5 = 100/Math.abs(spread5) + 1
+	
+	}else{
+
+		var parOdds5 = spread5/100 + 1
+	}
+
+
+	var totalOdds = parOdds1 * parOdds2 * parOdds3 * parOdds4 * parOdds5
+
+	var payout = amount * totalOdds
+
+	return [totalOdds, amount, payout]
+}
+
+
+function createMatchup(fav, dog, spread){
+
+	var gameMatchup = fav.city + " " + "-" + spread + " " + dog.city
+
+	fav.opp = dog
+	fav.spread = 0 - spread
+	dog.opp = fav
+	dog.spread = spread
+
+	return [gameMatchup, fav.opp, fav.spread, dog.opp, dog.spread]
+}
+
+
+
+function SpreadTeam (teamName, city, sport){
+	
+	this.teamName = teamName
+	this.city = city
+	this.sport = sport
+	this.startTime = 0
+	this.opp = "none"
+	this.spread = 0
+	this.score = 0
+	this.oppScore = 0
+	
+	if(this.sport == "NFL" || this.sport == "CFB"){
+
+		this.twoTeamTeaser = function(){
+
+			x = this.spread + 6
+			return x
+		}
+		this.threeTeamTeaser = function(){
+
+			x = this.spread + 10
+			return x
+
+		}
+		this.fiveTeamTeaser = function(){
+
+			x = this.spread + 6
+			return x
+		}
+	
+	}else{
+
+		this.twoTeamTeaser = function(){
+
+			x = this.spread + 4
+			return x
+		}
+		this.threeTeamTeaser = function(){
+
+			x = this.spread + 6
+			return x
+
+		}
+		this.fiveTeamTeaser = function(){
+
+			x = this.spread + 4
+			return x
+		}
+	}
+	
+	this.gradeGame = function(){
+
+		if(this.score + this.spread > this.oppScore){
+
+			this.spreadResult = "win"
+		
+		}else if (this.score + this.spread < this.oppScore){
+
+			this.spreadResult = "loss"
+		
+		}else{
+
+			this.spreadResult = "push"
+		}
+
+		if(this.score + this.twoTeamTeaser() > this.oppScore){
+
+			this.twoTResult = "win"
+		
+		}else if(this.score + this.twoTeamTeaser() < this.oppScore){
+
+			this.twoTResult = "loss"
+		
+		}else{
+
+			this.twoTResult = "push"
+		}
+
+		if(this.score + this.threeTeamTeaser() > this.oppScore){
+
+			this.threeTResult = "win"
+		
+		}else if(this.score + this.twoTeamTeaser() < this.oppScore){
+
+			this.threeTResult = "loss"
+		
+		}else{
+
+			this.threeTResult = "push"
+		}
+
+		if(this.score + this.fiveTeamTeaser() > this.oppScore){
+
+			this.fiveTResult = "win"
+		
+		}else if(this.score + this.fiveTeamTeaser() < this.oppScore){
+
+			this.fiveTResult = "loss"
+		
+		}else{
+
+			this.fiveTResult = "push"
+		}
+
+	}
+
+}
+
+
+function MoneyLineTeam (teamName, city, sport){
+
+	this.teamName = teamName
+	this.city = city
+	this.sport = sport
+	this.startTime = 0
+	this.opp = "none"
+	this.moneyLine = 0
+	this.score = 0
+	this.oppScore = 0
+	
+	this.gradeGame = function(){
+
+		if(this.score > this.oppScore){
+
+			this.result = "win"
+		
+		}else if(this.score < this.oppScore){
+
+			this.result = "loss"
+		
+		}else{
+
+			this.result = "push"
+		}
+	}
+	
+}
+
+// function gradeTeams(fav, dog, spread, favScore, dogScore){
+
+// 	if(favScore - spread > dogScore){
+
+// 		dog.straight = "loss"
+// 		fav.straight = "win"
+// 		fav.twoTeam = "win"
+// 		fav.threeTeam = "win"
+// 		fav.fiveTeam = "win"
+// 	}else if(favScore - spread == dogScore){
+
+// 		dog.straight = "push"
+// 		fav.straight = "push"
+// 		fav.twoTeam = "win"
+// 		fav.threeTeam = "win"
+// 		fav.fiveTeam = "win"
+// 		dog.twoTeam = "win"
+// 		dog.threeTeam = "win"
+// 		dog.fiveTeam = "win"
+
+// 	}else{
+
+// 		dog.straight = "win"
+// 		fav.straight = "loss"
+		
+// 		if(favScore - spread + 6 > dogScore){
+
+// 			fav.twoTeam = "win"
+// 			fav.fiveTeam = "win"
+	
+
+// 		}else if(favScore - spread + 6 == dogScore){
+
+// 			fav.twoTeam = "push"
+// 			fav.fiveTeam = "push"
+		
+// 		}else{
+
+// 			fav.twoTeam = "loss"
+// 			fav.fiveTeam = "loss"
+
+// 		}
+
+// 		if(favScore - spread + 10 > dogScore){
+
+// 			fav.threeTeam = "win"
+		
+// 		}else if (favScore - spread + 10 == dogScore){
+
+// 			fav.threeTeam = "push"
+		
+// 		}else{
+
+// 			fav.threeTeam = "loss"
+// 		}
+
+// 		if(dogScore + spread + 6 > favScore){
+
+// 			dog.twoTeam = "win"
+// 			dog.fiveTeam = "win"
+		
+// 		}else if (dogScore + spread + 6 == favScore){
+
+// 			dog.twoTeam = "push"
+// 			dog.fiveTeam = "push"
+		
+// 		}else{
+
+// 			dog.twoTeam = "loss"
+// 			dog.fiveTeam = "loss"
+// 		}
+
+// 		if(dogScore + spread + 10 > favScore){
+
+// 			dog.threeTeam = "win"
+		
+// 		}else if(dogScore + spread + 10 == favScore){
+
+// 			dog.threeTeam = "push"
+		
+// 		}else{
+
+// 			dog.threeTeam = "loss"
+// 		}
+
+// 	}
+
+// 	return [fav, dog]
+
+// }
+
+// var Celtics = new CreateTeam("Boston", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+// nbaTeams.push(Celtics)
+
+// var Hawks = new CreateTeam("Atlanta", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+// nbaTeams.push(Hawks)
+
+// var Nets = new CreateTeam("Brooklyn", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+// nbaTeams.push(Nets)
+
+// var Hornets = new CreateTeam("Charlotte", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+// nbaTeams.push(Hornets)
+
+// var Bulls = new CreateTeam("Chicago", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+// nbaTeams.push(Bulls)
+
+// var Cavaliers = new CreateTeam("Cleveland", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+// nbaTeams.push(Cavaliers)
+
+// var Mavericks = new CreateTeam("Dallas", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+// nbaTeams.push(Mavericks)
+
+// var Nuggets = new CreateTeam("Denver", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+// nbaTeams.push(Nuggets)
+
+// var Pistons = new CreateTeam("Detroit", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+// nbaTeams.push(Pistons)
+
+// var Warriors = new CreateTeam("Golden State", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+// nbaTeams.push(Warriors)
+
+// var Rockets = new CreateTeam("Houston", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+// nbaTeams.push(Rockets)
+
+// var Pacers = new CreateTeam("Indiana", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+// nbaTeams.push(Pacers)
+
+// var Clippers = new CreateTeam("Los Angeles", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+// nbaTeams.push(Clippers)
+
+// var Lakers = new CreateTeam("Los Angeles", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+// nbaTeams.push(Lakers)
+
+// var Grizzlies = new CreateTeam("Memphis", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+// nbaTeams.push(Grizzlies)
+
+// var Heat = new CreateTeam("Miami", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+// nbaTeams.push(Heat)
+
+// var Bucks = new CreateTeam("Milwaukee", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+// nbaTeams.push(Bucks)
+
+// var Timberwolves = new CreateTeam("Minnesota", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+// nbaTeams.push(Timberwolves)
+
+// var Pelicans = new CreateTeam("New Orleans", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+// nbaTeams.push(Pelicans)
+
+// var Knicks = new CreateTeam("New York", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+// nbaTeams.push(Knicks)
+
+// var Thunder = new CreateTeam("Oklahoma City", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+// nbaTeams.push(Thunder)
+
+// var Magic = new CreateTeam("Orlando", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+// nbaTeams.push(Magic)
+
+// var Sixers = new CreateTeam("Philadelphia", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+// nbaTeams.push(Sixers)
+
+// var Suns = new CreateTeam("Phoenix", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+// nbaTeams.push(Suns)
+
+// var Blazers = new CreateTeam("Portland", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+// nbaTeams.push(Blazers)
+
+// var Kings = new CreateTeam("Sacramento", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+// nbaTeams.push(Kings)
+
+// var Spurs = new CreateTeam("San Antonio", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+// nbaTeams.push(Spurs)
+
+// var Raptors = new CreateTeam("Toronto", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+// nbaTeams.push(Raptors)
+
+// var Jazz = new CreateTeam("Utah", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+// nbaTeams.push(Jazz)
+
+// var Wizards = new CreateTeam("Washington", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
+// nbaTeams.push(Wizards)
 
 // function Client(first, last, state, bankroll, bets, type, pref, risk, affiliation){
 
@@ -229,259 +722,5 @@ function randomBR(min,max){
 // 	allClients.push(nextClient)
 
 // }
-
-function parlayCalc(spread1, spread2, spread3, amount){
-
-	if(spread1 < 0){
-
-		var parOdds1 = 100/Math.abs(spread1) + 1
-	
-	}else{
-
-		var parOdds1 = spread1/100 + 1
-	}
-
-	if(spread2 < 0){
-
-		var parOdds2 = 100/Math.abs(spread2) + 1
-	
-	}else{
-
-		var parOdds2 = spread2/100 + 1
-	}
-
-	if(spread3 < 0){
-
-		var parOdds3 = 100/Math.abs(spread1) + 1
-	
-	}else{
-
-		var parOdds3 = spread3/100 + 1
-	}
-
-	var totalOdds = parOdds1 * parOdds2 * parOdds3
-
-	var payout = amount * totalOdds
-
-	return [totalOdds, amount, payout]
-}
-
-function gradeTeams(fav, dog, spread, favScore, dogScore){
-
-	if(favScore - spread > dogScore){
-
-		dog.straight = "loss"
-		fav.straight = "win"
-		fav.twoTeam = "win"
-		fav.threeTeam = "win"
-		fav.fiveTeam = "win"
-	}else if(favScore - spread == dogScore){
-
-		dog.straight = "push"
-		fav.straight = "push"
-		fav.twoTeam = "win"
-		fav.threeTeam = "win"
-		fav.fiveTeam = "win"
-		dog.twoTeam = "win"
-		dog.threeTeam = "win"
-		dog.fiveTeam = "win"
-
-	}else{
-
-		dog.straight = "win"
-		fav.straight = "loss"
-		
-		if(favScore - spread + 6 > dogScore){
-
-			fav.twoTeam = "win"
-			fav.fiveTeam = "win"
-	
-
-		}else if(favScore - spread + 6 == dogScore){
-
-			fav.twoTeam = "push"
-			fav.fiveTeam = "push"
-		
-		}else{
-
-			fav.twoTeam = "loss"
-			fav.fiveTeam = "loss"
-
-		}
-
-		if(favScore - spread + 10 > dogScore){
-
-			fav.threeTeam = "win"
-		
-		}else if (favScore - spread + 10 == dogScore){
-
-			fav.threeTeam = "push"
-		
-		}else{
-
-			fav.threeTeam = "loss"
-		}
-
-		if(dogScore + spread + 6 > favScore){
-
-			dog.twoTeam = "win"
-			dog.fiveTeam = "win"
-		
-		}else if (dogScore + spread + 6 == favScore){
-
-			dog.twoTeam = "push"
-			dog.fiveTeam = "push"
-		
-		}else{
-
-			dog.twoTeam = "loss"
-			dog.fiveTeam = "loss"
-		}
-
-		if(dogScore + spread + 10 > favScore){
-
-			dog.threeTeam = "win"
-		
-		}else if(dogScore + spread + 10 == favScore){
-
-			dog.threeTeam = "push"
-		
-		}else{
-
-			dog.threeTeam = "loss"
-		}
-
-	}
-
-	return [fav, dog]
-
-}
-
-var Celtics = new CreateTeam("Boston", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
-nbaTeams.push(Celtics)
-
-var Hawks = new CreateTeam("Atlanta", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
-nbaTeams.push(Hawks)
-
-var Nets = new CreateTeam("Brooklyn", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
-nbaTeams.push(Nets)
-
-var Hornets = new CreateTeam("Charlotte", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
-nbaTeams.push(Hornets)
-
-var Bulls = new CreateTeam("Chicago", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
-nbaTeams.push(Bulls)
-
-var Cavaliers = new CreateTeam("Cleveland", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
-nbaTeams.push(Cavaliers)
-
-var Mavericks = new CreateTeam("Dallas", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
-nbaTeams.push(Mavericks)
-
-var Nuggets = new CreateTeam("Denver", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
-nbaTeams.push(Nuggets)
-
-var Pistons = new CreateTeam("Detroit", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
-nbaTeams.push(Pistons)
-
-var Warriors = new CreateTeam("Golden State", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
-nbaTeams.push(Warriors)
-
-var Rockets = new CreateTeam("Houston", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
-nbaTeams.push(Rockets)
-
-var Pacers = new CreateTeam("Indiana", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
-nbaTeams.push(Pacers)
-
-var Clippers = new CreateTeam("Los Angeles", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
-nbaTeams.push(Clippers)
-
-var Lakers = new CreateTeam("Los Angeles", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
-nbaTeams.push(Lakers)
-
-var Grizzlies = new CreateTeam("Memphis", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
-nbaTeams.push(Grizzlies)
-
-var Heat = new CreateTeam("Miami", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
-nbaTeams.push(Heat)
-
-var Bucks = new CreateTeam("Milwaukee", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
-nbaTeams.push(Bucks)
-
-var Timberwolves = new CreateTeam("Minnesota", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
-nbaTeams.push(Timberwolves)
-
-var Pelicans = new CreateTeam("New Orleans", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
-nbaTeams.push(Pelicans)
-
-var Knicks = new CreateTeam("New York", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
-nbaTeams.push(Knicks)
-
-var Thunder = new CreateTeam("Oklahoma City", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
-nbaTeams.push(Thunder)
-
-var Magic = new CreateTeam("Orlando", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
-nbaTeams.push(Magic)
-
-var Sixers = new CreateTeam("Philadelphia", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
-nbaTeams.push(Sixers)
-
-var Suns = new CreateTeam("Phoenix", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
-nbaTeams.push(Suns)
-
-var Blazers = new CreateTeam("Portland", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
-nbaTeams.push(Blazers)
-
-var Kings = new CreateTeam("Sacramento", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
-nbaTeams.push(Kings)
-
-var Spurs = new CreateTeam("San Antonio", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
-nbaTeams.push(Spurs)
-
-var Raptors = new CreateTeam("Toronto", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
-nbaTeams.push(Raptors)
-
-var Jazz = new CreateTeam("Utah", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
-nbaTeams.push(Jazz)
-
-var Wizards = new CreateTeam("Washington", "NBA", 0, "none", 0, 0, 0, "N/A", "N/A", "N/A", "N/A")
-nbaTeams.push(Wizards)
-
-
-
-for(i=0; i<nbaTeams.length; i++){
-
-	nbaTeams[i].spread = "N/A"
-}
-
-function createMatchup(fav, dog, spread){
-
-	var gameMatchup = fav.city + " " + "-" + spread + " " + dog.city
-
-	fav.opp = dog
-	fav.spread = 0 - spread
-	dog.opp = fav
-	dog.spread = spread
-
-	return [gameMatchup, fav.opp, fav.spread, dog.opp, dog.spread]
-}
-
-
-
-function CreateTeam (city, sport, startTime, opp, spread, score, oppScore, straight, twoTeam, threeTeam, fiveTeam){
-
-	this.city = city
-	this.sport = sport
-	this.startTime = startTime
-	this.opp = opp
-	this.spread = spread
-	this.score = score
-	this.oppScore = oppScore
-	this.straight = straight
-	this.twoTeam = twoTeam
-	this.threeTeam = threeTeam
-	this.fiveTeam = fiveTeam
-
-}
 
 
