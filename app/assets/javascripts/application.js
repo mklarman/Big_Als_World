@@ -29,43 +29,11 @@ var clientTypes = ["Small Timer", "Pay Dumper", "High Roller"]
 var kinds = ["Sports Betting", "Lottery"]
 var creditRating = ["No Pay", "Slow Pay", "Solid Pay", "Lock Pay"]
 var affiliation = false
+var nbaBettingOpt = []
+var wagers = []
+var betStyles = ["Small Timer", "Pay Dumper", "High Roller"]
 
 
-function pickOneTeam(){
-
-	var team = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
-
-}
-
-function pickTwoTeams(){
-
-	var team1 = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
-	var team2 = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
-}
-
-function pickThreeTeams(){
-
-	var team1 = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
-	var team2 = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
-	var team3 = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
-}
-
-function pickFourTeams(){
-
-	var team1 = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
-	var team2 = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
-	var team3 = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
-	var team4 = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
-}
-
-function pickFiveTeams(){
-
-	var team1 = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
-	var team2 = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
-	var team3 = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
-	var team4 = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
-	var team5 = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
-}
 
 function ClientObj(){
 
@@ -75,6 +43,7 @@ function ClientObj(){
 	this.stakes = clientTypes[Math.floor(Math.random() * clientTypes.length)]
 	this.betOptions = ["Sports"]
 	this.betStyle = betStyles[Math.floor(Math.random() * betStyles.length)]
+	this.sportsBets = []
 
 	if(this.stakes == "Small Timer"){
 
@@ -119,58 +88,107 @@ function ClientObj(){
 		this.possWager = ["2 team parlay", "3 team parlay", "4 team parlay", "5 team parlay", "2 team teaser", "3 team teaser", "4 team teaser", "5 team teaser", "2 team reverse", "3 team reverse", "4 team reverse"]
 	}
 
-	this.sportsBets = []
 
 	this.genWager = function(){
 
-		var team1 = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
-		var team2 = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
-		var team3 = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
-		var team4 = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
-		var team5 = nbaBettingOpt[Math.floor(Math.random() * nbaBettingOpt.length)]
+		var newWager = {}
+
 
 		newWager.category = this.betOptions[Math.floor(Math.random() * this.betOptions.length)]
 		newWager.type = this.possWager[Math.floor(Math.random() * this.possWager.length)]
 		newWager.amount = this.betAmounts[Math.floor(Math.random() * this.betAmounts.length)]
 		newWager.teams = []			
-
-
 		
 
 		if(newWager.type == "straight"){
 
-			newWager.teams.push(team1)
+			var matchup = nbaBettingOpt.pop()
+			var pick = [pickATeam(matchup)]
+
+			newWager.teams.push(pick)
 				
 		}else if(newWager.type == "2 team parlay" || newWager.type == "2 team teaser" || newWager.type == "2 team reverse"){
 
-			newWager.teams.push(team1)
-			newWager.teams.push(team2)
+			var exoticWager = []
+			var matchup1 = nbaBettingOpt.pop()
+			var matchup2 = nbaBettingOpt.pop()
+			var pick1 = pickATeam(matchup1)
+			var pick2 = pickATeam(matchup2)
+			exoticWager.push(pick1)
+			exoticWager.push(pick2)
+			newWager.teams.push(exoticWager)
 				
 		}else if(newWager.type == "3 team parlay" || newWager.type == "3 team teaser" || newWager.type == "3 team reverse"){
 
-			newWager.teams.push(team1)
-			newWager.teams.push(team2)
-			newWager.teams.push(team3)
+			var exoticWager = []
+			var matchup1 = nbaBettingOpt.pop()
+			var matchup2 = nbaBettingOpt.pop()
+			var matchup3 = nbaBettingOpt.pop()
+			var pick1 = pickATeam(matchup1)
+			var pick2 = pickATeam(matchup2)
+			var pick3 = pickATeam(matchup3)
+			exoticWager.push(pick1)
+			exoticWager.push(pick2)
+			exoticWager.push(pick3)
+			newWager.teams.push(exoticWager)
 				
 		}else if(newWager.type == "4 team parlay" || newWager.type == "4 team teaser" || newWager.type == "4 team reverse"){
 
-			newWager.teams.push(team1)
-			newWager.teams.push(team2)
-			newWager.teams.push(team3)
-			newWager.teams.push(team4)
+			var exoticWager = []
+			var matchup1 = nbaBettingOpt.pop()
+			var matchup2 = nbaBettingOpt.pop()
+			var matchup3 = nbaBettingOpt.pop()
+			var matchup4 = nbaBettingOpt.pop()
+			var pick1 = pickATeam(matchup1)
+			var pick2 = pickATeam(matchup2)
+			var pick3 = pickATeam(matchup3)
+			var pick4 = pickATeam(matchup4)
+			exoticWager.push(pick1)
+			exoticWager.push(pick2)
+			exoticWager.push(pick3)
+			exoticWager.push(pick4)
+			newWager.teams.push(exoticWager)
+		
 		}else{
 
-			 newWager.teams.push(team1)
-			 newWager.teams.push(team2)
-			 newWager.teams.push(team3)
-			 newWager.teams.push(team4)
-			 newWager.teams.push(team5)
+			var exoticWager = []
+			var matchup1 = nbaBettingOpt.pop()
+			var matchup2 = nbaBettingOpt.pop()
+			var matchup3 = nbaBettingOpt.pop()
+			var matchup4 = nbaBettingOpt.pop()
+			var matchup5 = nbaBettingOpt.pop()
+			var pick1 = pickATeam(matchup1)
+			var pick2 = pickATeam(matchup2)
+			var pick3 = pickATeam(matchup3)
+			var pick4 = pickATeam(matchup4)
+			var pick5 = pickATeam(matchup5)
+			exoticWager.push(pick1)
+			exoticWager.push(pick2)
+			exoticWager.push(pick3)
+			exoticWager.push(pick4)
+			exoticWager.push(pick5)
+			newWager.teams.push(exoticWager)
 		}
 
 		this.sportsBets.push(newWager)
+		wagers.push(newWager)
 
 	}	
 
+}
+
+function pickATeam(matchup){
+
+	var ranNum = randomBR(1, 2)
+
+	if(ranNum == 1){
+
+		return matchup.favorite
+	
+	}else{
+
+		return matchup.underdog
+	}
 }
 
 function randomBR(min,max){
@@ -344,17 +362,48 @@ function parlayCalc5(spread1, spread2, spread3, spread4, spread5, amount){
 }
 
 
-function createMatchup(fav, dog, spread){
+function createSpreadMatchup(sport, fav, dog, spread){
 
-	var gameMatchup = fav.city + " " + "-" + spread + " " + dog.city
 
 	fav.opp = dog
 	fav.spread = 0 - spread
 	dog.opp = fav
 	dog.spread = spread
 
-	return [gameMatchup, fav.opp, fav.spread, dog.opp, dog.spread]
+	var gameMatchup = {
+
+		favorite: fav,
+		underdog: dog,
+		spread: spread
+	}
+
+	if(sport == "NBA"){
+
+		nbaBettingOpt.push(gameMatchup)
+	}
+
 }
+
+function setMatchups(){
+
+	createSpreadMatchup("NBA", Celtics, Hawks, 5)
+	createSpreadMatchup("NBA", Sixers, Knicks, 2)
+	createSpreadMatchup("NBA", Jazz, Raptors, 9)
+	createSpreadMatchup("NBA", Hornets, Nets, 4.5)
+	createSpreadMatchup("NBA", Nuggets, Heat, 1)
+}
+
+var Celtics = new SpreadTeam("Celtics", "Boston", "NBA")
+var Hawks = new SpreadTeam("Hawks", "Atlanta", "NBA")
+var Sixers = new SpreadTeam("76ers", "Philly", "NBA")
+var Knicks = new SpreadTeam("Knicks", "New York", "NBA")
+var Jazz = new SpreadTeam("Jazz", "Utah", "NBA")
+var Raptors = new SpreadTeam("Raptors", "Toronto", "NBA")
+var Hornets = new SpreadTeam("Hornets", "Charlotte", "NBA")
+var Nets = new SpreadTeam("Nets", "Brooklyn", "NBA")
+var Nuggets = new SpreadTeam("Nuggets", "Denver", "NBA")
+var Heat = new SpreadTeam("Heat", "Miami", "NBA")
+
 
 
 
