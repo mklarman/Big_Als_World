@@ -173,9 +173,442 @@ function ClientObj(){
 		this.sportsBets.push(newWager)
 		wagers.push(newWager)
 
-	}	
+	}
 
-}
+	this.gradeWagers = function(){
+
+		var winnerCircle = []
+		var losers = []
+		var pushes = []
+		var twoTWins = []
+		var twoTLoss = []
+		var threeTWin = []
+		var threeTLoss = []
+		var fiveTWin = []
+		var fiveTLoss = []
+
+		for(i=0; i<this.sportsBets.length; i++){
+
+			for(z=0; z<this.sportsBets[i].teams.length; z++){
+
+				for(x=0; x<this.sportsBets[i].teams[z].length; x++){
+
+					if(this.sportsBets[i].teams[z][x].spreadResult == "win"){
+
+						winnerCircle.push(this.sportsBets[i].teams[z][x])
+					
+					}else if (this.sportsBets[i].teams[z][x].spreadResult == "loss"){
+
+						losers.push(this.sportsBets[i].teams[z][x])
+					
+					}else{
+
+						pushes.push(this.sportsBets[i].teams[z][x])
+					}
+
+					if(this.sportsBets[i].teams[z][x].twoTResult == "win"){
+
+						twoTWins.push(this.sportsBets[i].teams[z][x])
+					
+					}else{
+
+						twoTLoss.push(this.sportsBets[i].teams[z][x])
+
+					}
+
+					if(this.sportsBets[i].teams[z][x].threeTResult == "win"){
+
+						threeTWin.push(this.sportsBets[i].teams[z][x])
+					
+					}else{
+
+						threeTLoss.push(this.sportsBets[i].teams[z][x])
+					}
+
+					if(this.sportsBets[i].teams[z][x].fiveTResult == "win"){
+
+						fiveTWin.push(this.sportsBets[i].teams[z][x])
+					
+					}else{
+
+						fiveTLoss.push(this.sportsBets[i].teams[z][x])
+					}
+				}
+			}
+			
+
+		}
+
+	}
+
+	this.gradeWagers = function(){
+
+		
+
+		for(i=0; i<this.sportsBets.length; i++){
+
+			for(z=0; z<this.sportsBets[i].teams.length; z++){
+
+				for(x=0; x<this.sportsBets[i].teams[z].length; x++){
+
+					if(this.sportsBets[i].teams[z][x].spreadResult == "win"){
+
+						winnerCircle.push(this.sportsBets[i].teams[z][x])
+
+					}else if (this.sportsBets[i].teams[z][x].spreadResult == "loss"){
+
+						losers.push(this.sportsBets[i].teams[z][x])
+					
+					}else{
+
+						pushes.push(this.sportsBets[i].teams[z][x])
+
+					}
+
+					if(this.sportsBets[i].teams[z][x].twoTResult == "win"){
+
+						twoTWins.push(this.sportsBets[i].teams[z][x])
+
+					}else{
+
+						twoTLoss.push(this.sportsBets[i].teams[z][x])
+					}
+
+					if(this.sportsBets[i].teams[z][x].threeTResult == "win"){
+
+						threeTWin.push(this.sportsBets[i].teams[z][x])
+					
+					}else{
+
+						threeTLoss.push(this.sportsBets[i].teams[z][x])
+					}
+
+					if(this.sportsBets[i].teams[z][x].fiveTResult == "win"){
+
+						fiveTWin.push(this.sportsBets[i].teams[z][x])
+					
+					}else{
+
+						fiveTLoss.push(this.sportsBets[i].teams[z][x])
+
+					}
+
+
+				}
+			}
+
+			if(this.sportsBets[i].type = "straight"){
+
+				if(winnerCircle.length == 1 && losers.length == 0){
+
+					this.bankroll += this.sportsBets[i].amount
+				
+				}else if(winnerCircle.length == 0 && pushes.length == 1){
+
+					this.bankroll = this.bankroll
+				
+				}else{
+
+					var creditAmount = this.sportsBets[i].amount * 1.1
+
+					this.bankroll -= creditAmount
+				}
+			
+			}else if(this.sportsBets[i].type = "2 team parlay"){
+
+				if(losers.length > 0){
+
+					this.bankroll -= this.sportsBets[i].amount
+				
+				}else if(losers.length == 0 && pushes.length == 1 && winnerCircle.length == 1){
+
+					this.bankroll += this.sportsBets[i].amount
+
+				}else{
+
+					var creditAmount = this.sportsBets[i].amount * 2.5
+					this.bankroll += creditAmount
+				}
+
+			}else if(this.sportsBets[i].type = "3 team parlay"){
+
+				if(losers.length > 0){
+
+					this.bankroll -= this.sportsBets[i].amount
+
+				}else{
+
+					if(losers.length == 0){
+
+						if(winnerCircle.length == 1){
+
+							this.bankroll += this.sportsBets[i].amount
+
+						}else if(winnerCircle.length == 2){
+
+							var creditAmount = this.sportsBets[i].amount * 2.5
+							this.bankroll += creditAmount
+
+						}else{
+
+							var creditAmount = this.sportsBets[i].amount * 5
+							this.bankroll += creditAmount
+
+						}
+
+					}
+				}
+			
+			}else if(this.sportsBets[i].type = "4 team parlay"){
+
+				if(losers.length > 0){
+
+					this.bankroll -= this.sportsBets[i].amount
+
+				}else{
+
+					if(losers.length == 0){
+
+						if(winnerCircle.length == 1){
+
+							this.bankroll += this.sportsBets[i].amount
+
+						}else if(winnerCircle.length == 2){
+
+							var creditAmount = this.sportsBets[i].amount * 2.5
+							this.bankroll += creditAmount
+
+						}else if(winnerCircle.length == 3){
+
+							var creditAmount = this.sportsBets[i].amount * 5
+							this.bankroll += creditAmount
+
+						}else{
+
+							var creditAmount = this.sportsBets[i].amount * 10
+							this.bankroll += creditAmount
+
+						}
+
+					}
+
+				}
+
+			}else if(this.sportsBets[i].type = "5 team parlay"){
+
+				if(losers.length > 0){
+
+					this.bankroll -= this.sportsBets[i].amount
+
+				}else{
+
+					if(losers.length == 0){
+
+						if(winnerCircle.length == 1){
+
+							this.bankroll += this.sportsBets[i].amount
+
+						}else if(winnerCircle.length == 2){
+
+							var creditAmount = this.sportsBets[i].amount * 2.5
+							this.bankroll += creditAmount
+
+						}else if(winnerCircle.length == 3){
+
+							var creditAmount = this.sportsBets[i].amount * 5
+							this.bankroll += creditAmount
+
+						}else if(winnerCircle.length == 4){
+
+							var creditAmount = this.sportsBets[i].amount * 10
+							this.bankroll += creditAmount
+
+						}else{
+
+							var creditAmount = this.sportsBets[i].amount * 20
+							this.bankroll += creditAmount
+
+						}
+
+					}
+
+				}
+
+			}else if(this.sportsBets[i].type = "2 team reverse"){
+
+				if(losers.length == 2){
+
+					var creditAmount = this.sportsBets[i].amount * 2.2
+					this.bankroll -= creditAmount
+
+				}else if(losers.length == 1 && pushes.length == 1){
+
+					var creditAmount = this.sportsBets[i].amount * 1.1
+					this.bankroll -= creditAmount
+				
+				}else if (winnerCircle.length == 1 && pushes.length ==1){
+
+					this.bankroll += this.sportsBets[i].amount
+				
+				}else if(pushes.length == 2){
+
+					this.bankroll = this.bankroll
+
+				}else{
+
+					var creditAmount = this.sportsBets[i].amount * 4
+					this.bankroll += creditAmount
+
+				}
+			
+			}else if(this.sportsBets[i].type = "3 team reverse"){
+
+				if(losers.length == 3){
+
+					var creditAmount = this.sportsBets[i].amount * 6.6
+					this.bankroll -= creditAmount
+				
+				}else if(losers.length == 2 && pushes.length == 1){
+
+					var creditAmount = this.sportsBets[i].amount * 4.4
+					this.bankroll -= creditAmount
+				
+				}else if(losers.length == 1 && pushes.length == 2){
+
+					this.bankroll -= this.sportsBets[i].amount
+				
+				}else if(pushes.length == 3){
+
+					this.bankroll = this.bankroll
+				
+				}else if (losers.length == 2 && winnerCircle.length == 1){
+
+					var creditAmount = this.sportsBets[i].amount * 3.4
+					this.bankroll -= creditAmount
+				
+				}else if(losers.length == 1 && winnerCircle.length == 1 && pushes.length == 1){
+
+					var creditAmount = this.sportsBets[i].amount * 1.3
+					this.bankroll -= creditAmount
+
+				}else if(losers.length == 1 && winnerCircle.length == 2){
+
+					var creditAmount = this.sportsBets[i].amount * 1.6
+					this.bankroll += creditAmount
+				
+				}else{
+
+					creditAmount = this.sportsBets[i].amount * 12
+					this.bankroll += creditAmount
+				}
+
+			}else if(this.sportsBets[i].type = "4 team reverse"){
+
+				if(losers.length == 4){
+
+					var creditAmount = this.sportsBets[i].amount * 13.2
+					this.bankroll -= creditAmount
+				
+				}else if(losers.length == 3 && pushes.length == 1){
+
+					var creditAmount = this.sportsBets[1].amount * 9.9
+					this.bankroll -= creditAmount
+				
+				}else if(losers.length == 2 && pushes.length == 2){
+
+					var creditAmount = this.sportsBets[i].amount * 6.6
+					this.bankroll -= creditAmount
+				
+				}else if(losers.length == 1 && pushes.length == 3){
+
+					var creditAmount = this.sportsBets[i].amount * 3.3
+					this.bankroll -= creditAmount
+
+				}else if(pushes.length == 4){
+
+					this.bankroll = this.bankroll
+				
+				}else if(losers.length == 2 && winnerCircle.length == 1 && pushes.length == 1){
+
+					var creditAmount = this.sportsBets[i].amount * 3.8
+					this.bankroll -= creditAmount
+
+				}else if(losers.length == 1 && winnerCircle.length == 1 && pushes.length == 2){
+
+					var creditAmount = this.sportsBets[i].amount * 1.4
+					this.bankroll -= creditAmount
+
+				}else if(losers.length == 1 && winnerCircle.length == 2 && pushes.length == 1){
+
+					var creditAmount = this.sportsBets[i].amount * 2.5
+					this.bankroll += creditAmount
+
+				}else if(winnerCircle.length == 1 && pushes.length == 3){
+
+					var creditAmount = this.sportsBets[i].amount * 3
+					this.bankroll += creditAmount
+				
+				}else if(winnerCircle.length == 2 && pushes.length == 2){
+
+					var creditAmount = this.sportsBets[i].amount * 8
+					this.bankroll += creditAmount
+				
+				}else if(winnerCircle.length == 3 && pushes.amount == 1){
+
+					var creditAmount = this.sportsBets[i].amount * 15
+					this.bankroll += creditAmount
+
+				}else{
+
+					var creditAmount = this.sportsBets[i].amount * 24
+					this.bankroll += creditAmount
+				}
+
+			}else if(this.sportsBets[i].type = "2 team teaser"){
+
+				if(twoTLoss.length > 0){
+
+					var creditAmount = this.sportsBets[i].amount * 1.2
+					this.bankroll -= creditAmount
+				
+				}else{
+
+					var creditAmount = this.sportsBets[i].amount
+					this.bankroll += creditAmount
+				}
+
+			}else if(this.sportsBets[i].type = "3 team teaser"){
+
+				if(threeTLoss.length > 0){
+
+					var creditAmount = this.sportsBets[i].amount * 1.4
+					this.bankroll -= creditAmount
+				
+				}else{
+
+					var creditAmount = this.sportsBets[i].amount
+					this.bankroll += creditAmount
+
+				}
+
+			}else{
+
+				if(fiveTLoss.length > 0){
+
+					var creditAmount = this.sportsBets[i].amount * 1.1
+					this.bankroll -= creditAmount
+
+				}else{
+
+					var creditAmount = this.sportsBets[i].amount * 5
+					this.bankroll += creditAmount
+
+				}
+		}
+  }	
+
+
+
 
 function pickATeam(matchup){
 
@@ -422,18 +855,18 @@ function SpreadTeam (teamName, city, sport){
 
 		this.twoTeamTeaser = function(){
 
-			x = this.spread + 6
+			x = this.spread + 6.5
 			return x
 		}
 		this.threeTeamTeaser = function(){
 
-			x = this.spread + 10
+			x = this.spread + 9.5
 			return x
 
 		}
 		this.fiveTeamTeaser = function(){
 
-			x = this.spread + 6
+			x = this.spread + 6.5
 			return x
 		}
 	
@@ -441,18 +874,18 @@ function SpreadTeam (teamName, city, sport){
 
 		this.twoTeamTeaser = function(){
 
-			x = this.spread + 4
+			x = this.spread + 4.5
 			return x
 		}
 		this.threeTeamTeaser = function(){
 
-			x = this.spread + 6
+			x = this.spread + 6.5
 			return x
 
 		}
 		this.fiveTeamTeaser = function(){
 
-			x = this.spread + 4
+			x = this.spread + 4.5
 			return x
 		}
 	}
@@ -544,7 +977,6 @@ function MoneyLineTeam (teamName, city, sport){
 	}
 	
 }
-
 // function gradeTeams(fav, dog, spread, favScore, dogScore){
 
 // 	if(favScore - spread > dogScore){
