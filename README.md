@@ -225,6 +225,16 @@ select teams
 fill in newWager object and push it to sportsBets.
 grade the wager and debit/credit client bankroll and the sportsBook of their owner.
 
+teams have to be separated by sport and and total at the set matchup function.
+
+I'm thinking now that maybe a Client should randomly pick all the games, issue their opinion.  Those opinions are put in an array and then teams are randomly picked from that array to fill wagers.  This will keep clients from picking both sides to a game.
+
+How to make total selections.  Team objects need a gamePoints, gameTotal, totalResult: Over or Under.  There needs to be a global array ["Over", "Under"].  Take a random pick from the array and add the gameTotal to it, when total game points are entered then run a function that compares total points to the total line and turn total result either Over, Under, or Push.
+
+for the printing of the bets I will need the string: pick + spread.  To grade I will need an object that I can access and compare.  Teasers will need to show the teaser line.
+
+I need functions to fill each type of teaser, for the other wagers filling only matters on the number of teams.
+
 
 
 
