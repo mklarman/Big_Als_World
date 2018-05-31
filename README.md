@@ -235,6 +235,18 @@ for the printing of the bets I will need the string: pick + spread.  To grade I 
 
 I need functions to fill each type of teaser, for the other wagers filling only matters on the number of teams.
 
+Sports Betting:
+
+1) Teams created
+2) Matchups set
+3)Client renders opinion
+4) Games sorted accordingly
+5) Wager type is selected
+6) Wager is filled
+7) Wager is displayed
+8) scores are entered, needed team functions are run
+9) Wagers are graded, accounts debited/credited
+
 
 
 

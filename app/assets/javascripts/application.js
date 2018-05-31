@@ -109,7 +109,7 @@ function ClientObj(){
 
 			newWager.teams.push(pick)
 				
-		}else if(newWager.type == "2 team parlay" || newWager.type == "2 team teaser" || newWager.type == "2 team reverse"){
+		}else if(newWager.type == "2 team parlay" || newWager.type == "2 team reverse"){
 
 			var exoticWager = []
 
@@ -120,7 +120,7 @@ function ClientObj(){
 			exoticWager.push(pick2)
 			newWager.teams.push(exoticWager)
 				
-		}else if(newWager.type == "3 team parlay" || newWager.type == "3 team teaser" || newWager.type == "3 team reverse"){
+		}else if(newWager.type == "3 team parlay" || newWager.type == "3 team reverse"){
 
 			var exoticWager = []
 			
@@ -134,7 +134,7 @@ function ClientObj(){
 			exoticWager.push(pick3)
 			newWager.teams.push(exoticWager)
 				
-		}else if(newWager.type == "4 team parlay" || newWager.type == "4 team teaser" || newWager.type == "4 team reverse"){
+		}else if(newWager.type == "4 team parlay" || newWager.type == "4 team reverse"){
 
 			var exoticWager = []
 			
@@ -149,6 +149,181 @@ function ClientObj(){
 			exoticWager.push(pick4)
 			newWager.teams.push(exoticWager)
 		
+		}else if(newWager.type == "2 team teaser"){
+
+			var exoticWager = []
+			
+			pick1 = clientOpp[Math.floor(Math.random() * clientOpp.length)]
+			pick2 = clientOpp[Math.floor(Math.random() * clientOpp.length)]
+
+			if(pick1[1][0] == "O"){
+
+				var thePick1 = pick1[0].teamName + " " + "Over" + " " + pick1[0].overTwoTeamTotal()
+
+			}else if(pick1[1][0] == "U"){
+
+				let thePick1 = pick1[0].teamName + " " + "Under" + " " + pick1[0].underTwoTeamTotal()
+			
+			}else{
+
+				let thePick1 = pick1[0].teamName + " " + pick1[0].spread
+			}
+
+			if(pick2[1][0] == "O"){
+
+				var thePick2 = pick2[0].teamName + " " + "Over" + " " + pick2[0].overTwoTeamTotal()
+
+			}else if(pick2[1][0] == "U"){
+
+				let thePick2 = pick2[0].teamName + " " + "Under" + " " + pick2[0].underTwoTeamTotal()
+			
+			}else{
+
+				let thePick2 = pick2[0].teamName + " " + pick2[0].spread
+			}	
+	
+			exoticWager.push([pick1[0], thePick1])
+			exoticWager.push([pick2[0], thePick2])
+			newWager.teams.push(exoticWager)
+
+		}else if(newWager.type == "3 team teaser"){
+
+			var exoticWager = []
+			
+			pick1 = clientOpp[Math.floor(Math.random() * clientOpp.length)]
+			pick2 = clientOpp[Math.floor(Math.random() * clientOpp.length)]
+			pick3 = clientOpp[Math.floor(Math.random() * clientOpp.length)]
+
+			if(pick1[1][0] == "O"){
+
+				var thePick1 = pick1[0].teamName + " " + "Over" + " " + pick1[0].overThreeTeamTotal()
+
+			}else if(pick1[1][0] == "U"){
+
+				let thePick1 = pick1[0].teamName + " " + "Under" + " " + pick1[0].underThreeTeamTotal()
+			
+			}else{
+
+				let thePick1 = pick1[0].teamName + " " + pick1[0].spread
+			}
+
+			if(pick2[1][0] == "O"){
+
+				var thePick2 = pick2[0].teamName + " " + "Over" + " " + pick2[0].overThreeTeamTotal()
+
+			}else if(pick2[1][0] == "U"){
+
+				let thePick2 = pick2[0].teamName + " " + "Under" + " " + pick2[0].underThreeTeamTotal()
+			
+			}else{
+
+				let thePick2 = pick2[0].teamName + " " + pick2[0].spread
+			}
+
+			if(pick3[1][0] == "O"){
+
+				var thePick3 = pick3[0].teamName + " " + "Over" + " " + pick3[0].overThreeTeamTotal()
+			
+			}else if(pick3[1][0] == "U"){
+
+				var thePick3 = pick3[0].teamName + " " + "Under" + " " + pick3[0].underThreeTeamTotal()
+			
+			}else{
+
+				var thePick3 = pick3[0].teamName + " " + pick3[0].spread
+			}	
+	
+			exoticWager.push([pick1[0], thePick1])
+			exoticWager.push([pick2[0], thePick2])
+			exoticWager.push([pick3[0], thePick3])
+			newWager.teams.push(exoticWager)
+
+		}else if(newWager.type == "5 team teaser"){
+
+
+			var exoticWager = []
+			
+			pick1 = clientOpp[Math.floor(Math.random() * clientOpp.length)]
+			pick2 = clientOpp[Math.floor(Math.random() * clientOpp.length)]
+			pick3 = clientOpp[Math.floor(Math.random() * clientOpp.length)]
+			pick4 = clientOpp[Math.floor(Math.random() * clientOpp.length)]
+			pick5 = clientOpp[Math.floor(Math.random() * clientOpp.length)]
+
+			if(pick1[1][0] == "O"){
+
+				var thePick1 = pick1[0].teamName + " " + "Over" + " " + pick1[0].overFiveTeamTotal()
+
+			}else if(pick1[1][0] == "U"){
+
+				let thePick1 = pick1[0].teamName + " " + "Under" + " " + pick1[0].underFiveTeamTotal()
+			
+			}else{
+
+				let thePick1 = pick1[0].teamName + " " + pick1[0].spread
+			}
+
+			if(pick2[1][0] == "O"){
+
+				var thePick2 = pick2[0].teamName + " " + "Over" + " " + pick2[0].overFiveTeamTotal()
+
+			}else if(pick2[1][0] == "U"){
+
+				let thePick2 = pick2[0].teamName + " " + "Under" + " " + pick2[0].underFiveTeamTotal()
+			
+			}else{
+
+				let thePick2 = pick2[0].teamName + " " + pick2[0].spread
+			}
+
+			if(pick3[1][0] == "O"){
+
+				var thePick3 = pick3[0].teamName + " " + "Over" + " " + pick3[0].overFiveTeamTotal()
+			
+			}else if(pick3[1][0] == "U"){
+
+				var thePick3 = pick3[0].teamName + " " + "Under" + " " + pick3[0].underFiveTeamTotal()
+			
+			}else{
+
+				var thePick3 = pick3[0].teamName + " " + pick3[0].spread
+			}
+
+			if(pick4[1][0] == "O"){
+
+				var thePick4 = pick4[0].teamName + " " + "Over" + " " + pick4[0].overFiveTeamTotal()
+
+			}else if(pick4[1][0] == "U"){
+
+				var thePick4 = pick4[0].teamName + " " + "Under" + " " + pick4[0].underFiveTeamTotal()
+			
+			}else{
+
+				var thePick4 = pick4[0].teamName + " " + pick4[0].spread
+
+			}
+
+			if(pick5[1][0] == "O"){
+
+				var thePick5 = pick5[0].teamName + " " + "Over" + " " + pick5[0].overFiveTeamTotal()
+
+			}else if(pick5[1][0] == "U"){
+
+				var thePick5 = pick5[0].teamName + " " + "Under" + " " + pick5[0].underFiveTeamTotal()
+			
+			}else{
+
+				var thePick5 = pick5[0].teamName + " " + pick5[0].spread
+
+			}		
+
+			exoticWager.push([pick1[0], thePick1])
+			exoticWager.push([pick2[0], thePick2])
+			exoticWager.push([pick3[0], thePick3])
+			exoticWager.push([pick4[0], thePick4])
+			exoticWager.push([pick5[0], thePick5])
+			newWager.teams.push(exoticWager)
+
+
 		}else{
 
 			var exoticWager = []
@@ -170,6 +345,17 @@ function ClientObj(){
 
 		this.sportsBets.push(newWager)
 
+	}
+
+	this.scoreWager = function(){
+
+		for(i=0; i<this.sportsBets.length; i++){
+
+			if(this.sportsBets[i].type == "straight"){
+
+			}
+
+		}
 	}
 }
 
@@ -610,19 +796,19 @@ function ClientObj(){
 
 
 
-function pickATeam(matchup){
+// function pickATeam(matchup){
 
-	var ranNum = randomBR(1, 2)
+// 	var ranNum = randomBR(1, 2)
 
-	if(ranNum == 1){
+// 	if(ranNum == 1){
 
-		return matchup.favorite
+// 		return matchup.favorite
 	
-	}else{
+// 	}else{
 
-		return matchup.underdog
-	}
-}
+// 		return matchup.underdog
+// 	}
+// }
 
 function randomBR(min,max){
     
@@ -801,20 +987,26 @@ function createSpreadMatchup(sport, fav, dog, spread, totalLine){
 	fav.opp = dog
 	fav.spread = 0 - spread
 	dog.opp = fav
-	dog.spread = "+" + spread
+	dog.spread = spread
 	fav.total = totalLine 
 	dog.total = totalLine 
 
 	var gameMatchup = {
 
 		favorite: fav.teamName + " " + fav.spread,
-		underdog: dog.teamName + " " + dog.spread,
+		underdog: dog.teamName + " " + "+" + dog.spread,
+		favTeam: fav,
+		dogTeam: dog
+
+
 	}
 
 	var totalsMatchup = {
 
 		overs: "Over " + fav.teamName + " " + totalLine,
-		unders: "Under " + dog.teamName + " " + totalLine	
+		unders: "Under " + dog.teamName + " " + totalLine,
+		ovTeam: fav,
+		unTeam: dog	
 
 
 	}
@@ -835,11 +1027,16 @@ function clientPicks(){
 
 		if(x == 1){
 
-			clientOpp.push(nbaBettingOpt[i].favorite)
+			let z = [nbaBettingOpt[i].favTeam, nbaBettingOpt[i].favorite]
+
+			clientOpp.push(z)
 
 		}else{
 
-			clientOpp.push(nbaBettingOpt[i].underdog)
+			let z = [nbaBettingOpt[i].dogTeam, nbaBettingOpt[i].underdog]
+
+			clientOpp.push(z)
+
 		}
 	}
 
@@ -849,11 +1046,16 @@ function clientPicks(){
 
 		if(y == 1){
 
-			clientOpp.push(nbaTotalsOpt[i].overs)
+			let z = [nbaTotalsOpt[i].ovTeam, nbaTotalsOpt[i].overs]
+
+			clientOpp.push(z)
 
 		}else{
 
-			clientOpp.push(nbaTotalsOpt[i].unders)
+			let z = [nbaTotalsOpt[i].unTeam, nbaTotalsOpt[i].unders]
+
+			clientOpp.push(z)
+
 		}
 
 	}
@@ -890,7 +1092,6 @@ function SpreadTeam (teamName, city, sport){
 	this.startTime = 0
 	this.opp = "none"
 	this.spread = 0
-	
 	this.score = 0
 	this.oppScore = 0
 	
@@ -990,28 +1191,327 @@ function SpreadTeam (teamName, city, sport){
 	}
 
 	this.total = 0
-	this.pointsScored = function(){
 
-		var totalPoints = this.score + this.oppScore
+	if(this.sport == "NFL" || "CFB"){
+	
+		this.overTwoTeamTotal = function(){
 
-		return totalPoints
-	}
+			var overT = this.total - 6.5
 
-	this.totalResult = function(){
-
-		if(this.pointsScored > this.total){
-
-			var tResult = "Over"
-		
-		}else if(this.pointsScored == this.total){
-
-			var tResult = "Push"
-		
-		}else{
-
-			var tResult =  "Under"
+			return overT
 		}
-		return tResult
+
+		this.underTwoTeamTotal = function(){
+
+			var underT = this.total + 6.5
+
+			return underT
+		}
+
+		this.overThreeTeamTotal = function(){
+
+			var overT = this.total - 9.5
+			return overT
+		}
+
+		this.underThreeTeamTotal = function(){
+
+			var underT = this.total + 9.5
+			return underT
+		}
+
+		this.overFiveTeamTotal = function(){
+
+			var overT = this.total - 6.5
+			return overT
+		}
+
+		this.underFiveTeamTotal = function(){
+
+			var underT = this.total + 6.5
+			return underT
+		}
+
+		this.ovTwoTTotalR = function(){
+
+			if(this.pointsScored() > this.overTwoTeamTotal()){
+
+				var twoTR = "win"
+			
+			}else if(this.pointsScored() == this.overTwoTeamTotal()){
+
+				var twoTR = "push"
+			}else{
+
+				var twoTR = "loss"
+			}
+			return twoTR
+		}
+
+		this.unTwoTTotalR = function(){
+
+			if(this.pointsScored() < this.underTwoTeamTotal()){
+
+				var twoTR = "win"
+			
+			}else if(this.pointsScored() == this.underTwoTeamTotal()){
+
+				var twoTR = "push"
+			}else{
+
+				var twoTR = "loss"
+			}
+			return twoTR
+		}
+
+		this.unThreeTTotalR = function(){
+
+			if(this.pointsScored() < this.underThreeTeamTotal()){
+
+				var threeTR = "win"
+			
+			}else if(this.pointsScored() == this.underThreeTeamTotal()){
+
+				var threeTR = "push"
+			}else{
+
+				var threeTR = "loss"
+			}
+			return threeTR
+		}
+
+		this.ovThreeTTotalR = function(){
+
+			if(this.pointsScored() > this.overThreeTeamTotal()){
+
+				var threeTR = "win"
+			
+			}else if(this.pointsScored() == this.overThreeTeamTotal()){
+
+				var threeTR = "push"
+			}else{
+
+				var threeTR = "loss"
+			}
+			return threeTR
+		}
+
+		this.ovFiveTTotalR = function(){
+
+			if(this.pointsScored() > this.overFiveTeamTotal()){
+
+				var fiveTR = "win"
+			
+			}else if(this.pointsScored() == this.overFiveTeamTotal()){
+
+				var fiveTR = "push"
+			}else{
+
+				var fiveTR = "loss"
+			}
+			return fiveTR
+		}
+
+		this.unFiveTTotalR = function(){
+
+			if(this.pointsScored() < this.underFiveTeamTotal()){
+
+				var fiveTR = "win"
+			
+			}else if(this.pointsScored() == this.underFiveTeamTotal()){
+
+				var fiveTR = "push"
+			}else{
+
+				var fiveTR = "loss"
+			}
+			return fiveTR
+		}
+
+		this.pointsScored = function(){
+
+			var totalPoints = this.score + this.oppScore
+
+			return totalPoints
+		}
+
+		this.totalResult = function(){
+
+			if(this.pointsScored() > this.total){
+
+				var tResult = "Over"
+			
+			}else if(this.pointsScored() == this.total){
+
+				var tResult = "Push"
+			
+			}else{
+
+				var tResult =  "Under"
+			}
+			return tResult
+		}
+
+	}else{
+
+		this.overTwoTeamTotal = function(){
+
+			var overT = this.total - 4.5
+
+			return overT
+		}
+
+		this.underTwoTeamTotal = function(){
+
+			var underT = this.total + 4.5
+
+			return underT
+		}
+
+		this.overThreeTeamTotal = function(){
+
+			var overT = this.total - 6.5
+			return overT
+		}
+
+		this.underThreeTeamTotal = function(){
+
+			var underT = this.total + 6.5
+			return underT
+		}
+
+		this.overFiveTeamTotal = function(){
+
+			var overT = this.total - 4.5
+			return overT
+		}
+
+		this.underFiveTeamTotal = function(){
+
+			var underT = this.total + 4.5
+			return underT
+		}
+
+		this.ovTwoTTotalR = function(){
+
+			if(this.pointsScored() > this.overTwoTeamTotal()){
+
+				var twoTR = "win"
+			
+			}else if(this.pointsScored() == this.overTwoTeamTotal()){
+
+				var twoTR = "push"
+			}else{
+
+				var twoTR = "loss"
+			}
+			return twoTR
+		}
+
+		this.unTwoTTotalR = function(){
+
+			if(this.pointsScored() < this.underTwoTeamTotal()){
+
+				var twoTR = "win"
+			
+			}else if(this.pointsScored() == this.underTwoTeamTotal()){
+
+				var twoTR = "push"
+			}else{
+
+				var twoTR = "loss"
+			}
+			return twoTR
+		}
+
+		this.unThreeTTotalR = function(){
+
+			if(this.pointsScored() < this.underThreeTeamTotal()){
+
+				var threeTR = "win"
+			
+			}else if(this.pointsScored() == this.underThreeTeamTotal()){
+
+				var threeTR = "push"
+			}else{
+
+				var threeTR = "loss"
+			}
+			return threeTR
+		}
+
+		this.ovThreeTTotalR = function(){
+
+			if(this.pointsScored() > this.overThreeTeamTotal()){
+
+				var threeTR = "win"
+			
+			}else if(this.pointsScored() == this.overThreeTeamTotal()){
+
+				var threeTR = "push"
+			}else{
+
+				var threeTR = "loss"
+			}
+			return threeTR
+		}
+
+		this.ovFiveTTotalR = function(){
+
+			if(this.pointsScored() > this.overFiveTeamTotal()){
+
+				var fiveTR = "win"
+			
+			}else if(this.pointsScored() == this.overFiveTeamTotal()){
+
+				var fiveTR = "push"
+			}else{
+
+				var fiveTR = "loss"
+			}
+			return fiveTR
+		}
+
+		this.unFiveTTotalR = function(){
+
+			if(this.pointsScored() < this.underFiveTeamTotal()){
+
+				var fiveTR = "win"
+			
+			}else if(this.pointsScored() == this.underFiveTeamTotal()){
+
+				var fiveTR = "push"
+			}else{
+
+				var fiveTR = "loss"
+			}
+			return fiveTR
+		}
+
+		this.pointsScored = function(){
+
+			var totalPoints = this.score + this.oppScore
+
+			return totalPoints
+		}
+
+		this.totalResult = function(){
+
+			if(this.pointsScored() > this.total){
+
+				var tResult = "Over"
+			
+			}else if(this.pointsScored() == this.total){
+
+				var tResult = "Push"
+			
+			}else{
+
+				var tResult =  "Under"
+			}
+			return tResult
+		}
+
 	}
 
 }
