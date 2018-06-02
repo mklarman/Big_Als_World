@@ -93,6 +93,12 @@ function ClientObj(){
 
 	this.genWager = function(){
 
+		var thePick1;
+		var thePick2;
+		var thePick3;
+		var thePick4;
+		var thePick5;
+
 		var newWager = {}
 
 
@@ -158,28 +164,51 @@ function ClientObj(){
 
 			if(pick1[1][0] == "O"){
 
-				var thePick1 = pick1[0].teamName + " " + "Over" + " " + pick1[0].overTwoTeamTotal()
+				thePick1 = "Over" + " " + pick1[0].teamName + " " + pick1[0].overTwoTeamTotal()
 
 			}else if(pick1[1][0] == "U"){
 
-				let thePick1 = pick1[0].teamName + " " + "Under" + " " + pick1[0].underTwoTeamTotal()
+				thePick1 = "Under" + " " + pick1[0].teamName + " " + pick1[0].underTwoTeamTotal()
 			
 			}else{
 
-				let thePick1 = pick1[0].teamName + " " + pick1[0].spread
+				if(pick1[0].twoTeamTeaser() > 0){
+
+					thePick1 = pick1[0].teamName + " " + "+" + pick1[0].twoTeamTeaser()
+				
+				}else if(pick1[0].twoTeamTeaser() == 0){
+
+					thePick1 = pick1[0].teamName + " " + "pk"
+				
+				}else{
+
+					thePick1 = pick1[0].teamName + " " + pick1[0].twoTeamTeaser()
+				}
+			
 			}
 
 			if(pick2[1][0] == "O"){
 
-				var thePick2 = pick2[0].teamName + " " + "Over" + " " + pick2[0].overTwoTeamTotal()
+				thePick2 = "Over" + " " + pick2[0].teamName + " " + pick2[0].overTwoTeamTotal()
 
 			}else if(pick2[1][0] == "U"){
 
-				let thePick2 = pick2[0].teamName + " " + "Under" + " " + pick2[0].underTwoTeamTotal()
+				thePick2 = "Under" + " " + pick2[0].teamName + " " + pick2[0].underTwoTeamTotal()
 			
 			}else{
 
-				let thePick2 = pick2[0].teamName + " " + pick2[0].spread
+				if(pick2[0].twoTeamTeaser() > 0){
+
+					thePick2 = pick2[0].teamName + " " + "+" + pick2[0].twoTeamTeaser()
+				
+				}else if(pick2[0].twoTeamTeaser() == 0){
+
+					thePick2 = pick2[0].teamName + " " + "pk"
+				
+				}else{
+
+					thePick2 = pick2[0].teamName + " " + pick2[0].twoTeamTeaser()
+				}
 			}	
 	
 			exoticWager.push([pick1[0], thePick1])
@@ -196,41 +225,75 @@ function ClientObj(){
 
 			if(pick1[1][0] == "O"){
 
-				var thePick1 = pick1[0].teamName + " " + "Over" + " " + pick1[0].overThreeTeamTotal()
+				thePick1 = "Over" + " " + pick1[0].teamName + " " + pick1[0].overThreeTeamTotal()
 
 			}else if(pick1[1][0] == "U"){
 
-				let thePick1 = pick1[0].teamName + " " + "Under" + " " + pick1[0].underThreeTeamTotal()
+				thePick1 = "Under" + " " + pick1[0].teamName + " " + pick1[0].underThreeTeamTotal()
 			
 			}else{
 
-				let thePick1 = pick1[0].teamName + " " + pick1[0].spread
+				if(pick1[0].threeTeamTeaser() > 0){
+
+					thePick1 = pick1[0].teamName + " " + "+" + pick1[0].threeTeamTeaser()
+				
+				}else if(pick1[0].threeTeamTeaser() == 0){
+
+					thePick1 = pick1[0].teamName + " " + "pk"
+				
+				}else{
+
+					thePick1 = pick1[0].teamName + " " + pick1[0].threeTeamTeaser()
+				}
+			
 			}
 
 			if(pick2[1][0] == "O"){
 
-				var thePick2 = pick2[0].teamName + " " + "Over" + " " + pick2[0].overThreeTeamTotal()
+				thePick2 = "Over" + " " + pick2[0].teamName + " " + pick2[0].overThreeTeamTotal()
 
 			}else if(pick2[1][0] == "U"){
 
-				let thePick2 = pick2[0].teamName + " " + "Under" + " " + pick2[0].underThreeTeamTotal()
+				thePick2 = "Under" + " " + pick2[0].teamName + " " + pick2[0].underThreeTeamTotal()
 			
 			}else{
 
-				let thePick2 = pick2[0].teamName + " " + pick2[0].spread
+				if(pick2[0].threeTeamTeaser() > 0){
+
+					thePick2 = pick2[0].teamName + " " + "+" + pick2[0].threeTeamTeaser()
+				
+				}else if(pick2[0].threeTeamTeaser() == 0){
+
+					thePick2 = pick2[0].teamName + " " + "pk"
+				
+				}else{
+
+					thePick2 = pick2[0].teamName + " " + pick2[0].threeTeamTeaser()
+				}
 			}
 
 			if(pick3[1][0] == "O"){
 
-				var thePick3 = pick3[0].teamName + " " + "Over" + " " + pick3[0].overThreeTeamTotal()
+				thePick3 = "Over" + " " + pick3[0].teamName + " " + pick3[0].overThreeTeamTotal()
 			
 			}else if(pick3[1][0] == "U"){
 
-				var thePick3 = pick3[0].teamName + " " + "Under" + " " + pick3[0].underThreeTeamTotal()
+				thePick3 = "Under" + " " + pick3[0].teamName + " " + pick3[0].underThreeTeamTotal()
 			
 			}else{
 
-				var thePick3 = pick3[0].teamName + " " + pick3[0].spread
+				if(pick3[0].threeTeamTeaser() > 0){
+
+					thePick3 = pick3[0].teamName + " " + "+" + pick3[0].threeTeamTeaser()
+				
+				}else if(pick3[0].threeTeamTeaser() == 0){
+
+					thePick3 = pick3[0].teamName + " " + "pk"
+				
+				}else{
+
+					thePick3 = pick3[0].teamName + " " + pick3[0].threeTeamTeaser()
+				}
 			}	
 	
 			exoticWager.push([pick1[0], thePick1])
@@ -251,68 +314,125 @@ function ClientObj(){
 
 			if(pick1[1][0] == "O"){
 
-				var thePick1 = pick1[0].teamName + " " + "Over" + " " + pick1[0].overFiveTeamTotal()
+				thePick1 = "Over" + " " + pick1[0].teamName + " " + pick1[0].overFiveTeamTotal()
 
 			}else if(pick1[1][0] == "U"){
 
-				let thePick1 = pick1[0].teamName + " " + "Under" + " " + pick1[0].underFiveTeamTotal()
+				thePick1 = "Under" + " " + pick1[0].teamName + " " + pick1[0].underFiveTeamTotal()
 			
 			}else{
 
-				let thePick1 = pick1[0].teamName + " " + pick1[0].spread
+				if(pick1[0].fiveTeamTeaser() > 0){
+
+					thePick1 = pick1[0].teamName + " " + "+" + pick1[0].fiveTeamTeaser()
+				
+				}else if(pick1[0].fiveTeamTeaser() == 0){
+
+					thePick1 = pick1[0].teamName + " " + "pk"
+				
+				}else{
+
+					thePick1 = pick1[0].teamName + " " + pick1[0].fiveTeamTeaser()
+				}
+			
 			}
 
 			if(pick2[1][0] == "O"){
 
-				var thePick2 = pick2[0].teamName + " " + "Over" + " " + pick2[0].overFiveTeamTotal()
+				thePick2 = "Over" + " " + pick2[0].teamName + " " + pick2[0].overFiveTeamTotal()
 
 			}else if(pick2[1][0] == "U"){
 
-				let thePick2 = pick2[0].teamName + " " + "Under" + " " + pick2[0].underFiveTeamTotal()
+				thePick2 = "Under" + " " + pick2[0].teamName + " " + pick2[0].underFiveTeamTotal()
 			
 			}else{
 
-				let thePick2 = pick2[0].teamName + " " + pick2[0].spread
+				if(pick2[0].fiveTeamTeaser() > 0){
+
+					thePick2 = pick2[0].teamName + " " + "+" + pick2[0].fiveTeamTeaser()
+				
+				}else if(pick2[0].fiveTeamTeaser() == 0){
+
+					thePick2 = pick2[0].teamName + " " + "pk"
+				
+				}else{
+
+					thePick2 = pick2[0].teamName + " " + pick2[0].fiveTeamTeaser()
+				}
 			}
 
 			if(pick3[1][0] == "O"){
 
-				var thePick3 = pick3[0].teamName + " " + "Over" + " " + pick3[0].overFiveTeamTotal()
+				thePick3 = "Over" + " " + pick3[0].teamName + " " + pick3[0].overFiveTeamTotal()
 			
 			}else if(pick3[1][0] == "U"){
 
-				var thePick3 = pick3[0].teamName + " " + "Under" + " " + pick3[0].underFiveTeamTotal()
+				thePick3 = "Under" + " " + pick3[0].teamName + " " + pick3[0].underFiveTeamTotal()
 			
 			}else{
 
-				var thePick3 = pick3[0].teamName + " " + pick3[0].spread
+				if(pick3[0].fiveTeamTeaser() > 0){
+
+					thePick3 = pick3[0].teamName + " " + "+" + pick3[0].fiveTeamTeaser()
+				
+				}else if(pick3[0].fiveTeamTeaser() == 0){
+
+					thePick3 = pick3[0].teamName + " " + "pk"
+				
+				}else{
+
+					thePick3 = pick3[0].teamName + " " + pick3[0].fiveTeamTeaser()
+				}
 			}
 
 			if(pick4[1][0] == "O"){
 
-				var thePick4 = pick4[0].teamName + " " + "Over" + " " + pick4[0].overFiveTeamTotal()
+				thePick4 = "Over" + " " + pick4[0].teamName + " " + pick4[0].overFiveTeamTotal()
 
 			}else if(pick4[1][0] == "U"){
 
-				var thePick4 = pick4[0].teamName + " " + "Under" + " " + pick4[0].underFiveTeamTotal()
+				thePick4 = "Under" + " " + pick4[0].teamName + " " + pick4[0].underFiveTeamTotal()
+			
 			
 			}else{
 
-				var thePick4 = pick4[0].teamName + " " + pick4[0].spread
+				if(pick4[0].fiveTeamTeaser() > 0){
+
+					thePick4 = pick4[0].teamName + " " + "+" + pick4[0].fiveTeamTeaser()
+				
+				}else if(pick4[0].fiveTeamTeaser() == 0){
+
+					thePick4 = pick4[0].teamName + " " + "pk"
+				
+				}else{
+
+					thePick4 = pick4[0].teamName + " " + pick4[0].fiveTeamTeaser()
+				}
 
 			}
 
 			if(pick5[1][0] == "O"){
 
-				var thePick5 = pick5[0].teamName + " " + "Over" + " " + pick5[0].overFiveTeamTotal()
+				thePick5 = "Over" + " " + pick5[0].teamName + " " + pick5[0].overFiveTeamTotal()
 
 			}else if(pick5[1][0] == "U"){
 
-				var thePick5 = pick5[0].teamName + " " + "Under" + " " + pick5[0].underFiveTeamTotal()
+				thePick5 = "Under" + " " + pick5[0].teamName + " " + pick5[0].underFiveTeamTotal()
 			
 			}else{
 
-				var thePick5 = pick5[0].teamName + " " + pick5[0].spread
+				if(pick5[0].fiveTeamTeaser() > 0){
+
+					thePick5 = pick5[0].teamName + " " + "+" + pick5[0].fiveTeamTeaser()
+				
+				}else if(pick5[0].fiveTeamTeaser() == 0){
+
+					thePick5 = pick5[0].teamName + " " + "pk"
+				
+				}else{
+
+					thePick5 = pick5[0].teamName + " " + pick5[0].fiveTeamTeaser()
+				}
 
 			}		
 
@@ -347,16 +467,134 @@ function ClientObj(){
 
 	}
 
+
 	this.scoreWager = function(){
 
 		for(i=0; i<this.sportsBets.length; i++){
+			
+			for(z=0; z<this.sportsBets[i].teams.length; z++){
 
-			if(this.sportsBets[i].type == "straight"){
+				this.sportsBets[i].teams[z][0].gradeGame()
 
+				for(x=0; x<this.sportsBets[i].teams[z].length; x++){
+
+
+					if(this.sportsBets[i].type == "straight"){
+
+						if(this.sportsBets[i].teams[z][1][0] == "O"){
+
+							if(this.sportsBets[i].teams[z][0].totalResult() == "Over"){
+
+								this.bankroll += this.sportsBets[i].amount
+							
+							}else if(this.sportsBets[i].teams[z][0].totalResult() == "Push"){
+
+								this.bankroll = this.bankroll
+
+							}else{
+
+								this.bankroll = this.bankroll - (1.1 * this.sportsBets[i].amount)
+
+							}
+						}else if(this.sportsBets[i].teams[z][1][0] == "U"){
+
+							if(this.sportsBets[i].teams[z][0].totalResult() == "Over"){
+
+								this.bankroll = this.bankroll - (1.1 * this.sportsBets[i].amount)
+							
+							}else if(this.sportsBets[i].teams[z][0].totalResult() == "Push"){
+
+								this.bankroll = this.bankroll
+
+							}else{
+
+								this.bankroll += this.sportsBets[i].amount
+
+							}
+
+
+						}else{
+
+							if(this.sportsBets[i].teams[z][0].moneyLine){
+
+								if(this.sportsBets[i].teams[z][0].result == "win"){
+
+									if(this.sportsBets[i].teams[z][0].moneyLine > 0){
+
+										this.bankroll = this.bankroll + ((moneyLine/100) * this.sportsBets[i].amount)
+									
+									}else{
+
+										this.bankroll += this.sportsBets[i].amount
+
+									}
+								}
+
+								if(this.sportsBets[i].teams[z][0].result == "loss"){
+
+									if(this.sportsBets[i].teams[z][0].moneyLine > 0){
+
+										this.bankroll -= this.sportsBets[i].amount
+									
+									}else{
+
+										this.bankroll = this.bankroll - ((100/Math.abs(moneyLine)) * this.sportsBets[i].amount)
+									}
+								}
+
+							}
+
+							if(this.sportsBets[i].teams[z][0].spread){
+
+								if(this.sportsBets[i].teams[z][0].spreadResult == "win"){
+
+									this.bankroll += this.sportsBets[i].amount
+								
+								}else if(this.sportsBets[i].teams[z][0].spreadResult == "push"){
+
+									this.bankroll = this.bankroll
+								
+								}else{
+
+									this.bankroll = this.bankroll - (this.sportsBets[i].amount * 1.1)
+								}
+							}
+						}
+
+					}
+				}
 			}
 
 		}
 	}
+}
+
+
+var client1;
+var client2;
+
+function setTrial(){
+
+	// 
+
+	createMoneyLineMatchup(Phillies, Mets, 130, 9.5)
+
+	client1 = new ClientObj()
+	client2 = new ClientObj()
+
+	client1.possWager = ["straight"]
+
+	clientPicks()
+
+	client1.genWager()
+
+	Phillies.score = 6
+	Phillies.oppScore = 4
+	Mets.score = 4
+	Mets.oppScore = 6
+
+
+	return client1.sportsBets
 }
 
 
@@ -1021,38 +1259,38 @@ function createSpreadMatchup(sport, fav, dog, spread, totalLine){
 
 function clientPicks(){
 
-	for(i=0; i<nbaBettingOpt.length; i++){
+	for(i=0; i<mlbSides.length; i++){
 
 		let x = randomBR(1, 2)
 
 		if(x == 1){
 
-			let z = [nbaBettingOpt[i].favTeam, nbaBettingOpt[i].favorite]
+			let z = [mlbSides[i].favTeam, mlbSides[i].favorite]
 
 			clientOpp.push(z)
 
 		}else{
 
-			let z = [nbaBettingOpt[i].dogTeam, nbaBettingOpt[i].underdog]
+			let z = [mlbSides[i].dogTeam, mlbSides[i].underdog]
 
 			clientOpp.push(z)
 
 		}
 	}
 
-	for(i=0; i<nbaTotalsOpt.length; i++){
+	for(i=0; i<mlbTotals.length; i++){
 
 		let y = randomBR(1, 2)
 
 		if(y == 1){
 
-			let z = [nbaTotalsOpt[i].ovTeam, nbaTotalsOpt[i].overs]
+			let z = [mlbTotals[i].ovTeam, mlbTotals[i].overs]
 
 			clientOpp.push(z)
 
 		}else{
 
-			let z = [nbaTotalsOpt[i].unTeam, nbaTotalsOpt[i].unders]
+			let z = [mlbTotals[i].unTeam, mlbTotals[i].unders]
 
 			clientOpp.push(z)
 
@@ -1192,7 +1430,7 @@ function SpreadTeam (teamName, city, sport){
 
 	this.total = 0
 
-	if(this.sport == "NFL" || "CFB"){
+	if(this.sport == "NFL" || this.sport == "CFB"){
 	
 		this.overTwoTeamTotal = function(){
 
@@ -1516,6 +1754,43 @@ function SpreadTeam (teamName, city, sport){
 
 }
 
+var mlbSides = []
+var mlbTotals = []
+var Phillies = new MoneyLineTeam("Phillies", "Philly", "MLB")
+var Mets = new MoneyLineTeam("Mets", "NY", "MLB")
+
+function createMoneyLineMatchup(fav, dog, moneyLine, total){
+
+	fav.opp = dog
+	fav.moneyLine = 0 - moneyLine
+	dog.opp = fav
+	dog.moneyLine = moneyLine
+	fav.total = total 
+	dog.total = total
+
+	var gameMatchup = {
+
+		favorite: fav.teamName + " " + fav.moneyLine,
+		underdog: dog.teamName + " " + "+" + dog.moneyLine,
+		favTeam: fav,
+		dogTeam: dog
+
+
+	}
+
+	var totalsMatchup = {
+
+		overs: "Over " + fav.teamName + " " + total,
+		unders: "Under " + dog.teamName + " " + total,
+		ovTeam: fav,
+		unTeam: dog	
+
+
+	}
+
+	mlbSides.push(gameMatchup)
+	mlbTotals.push(totalsMatchup)
+}
 
 function MoneyLineTeam (teamName, city, sport){
 
