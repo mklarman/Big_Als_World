@@ -577,10 +577,8 @@ function setTrial(){
 
 	// 
 
-	createMoneyLineMatchup(Phillies, Mets, 130, 9.5)
-
+	setMatchups()
 	client1 = new ClientObj()
-	client2 = new ClientObj()
 
 	client1.possWager = ["straight"]
 
@@ -588,10 +586,6 @@ function setTrial(){
 
 	client1.genWager()
 
-	Phillies.score = 6
-	Phillies.oppScore = 4
-	Mets.score = 4
-	Mets.oppScore = 6
 
 
 	return client1.sportsBets
@@ -1259,38 +1253,38 @@ function createSpreadMatchup(sport, fav, dog, spread, totalLine){
 
 function clientPicks(){
 
-	for(i=0; i<mlbSides.length; i++){
+	for(i=0; i<nbaBettingOpt.length; i++){
 
 		let x = randomBR(1, 2)
 
 		if(x == 1){
 
-			let z = [mlbSides[i].favTeam, mlbSides[i].favorite]
+			let z = [nbaBettingOpt[i].favTeam, nbaBettingOpt[i].favorite]
 
 			clientOpp.push(z)
 
 		}else{
 
-			let z = [mlbSides[i].dogTeam, mlbSides[i].underdog]
+			let z = [nbaBettingOpt[i].dogTeam, nbaBettingOpt[i].underdog]
 
 			clientOpp.push(z)
 
 		}
 	}
 
-	for(i=0; i<mlbTotals.length; i++){
+	for(i=0; i<nbaTotalsOpt.length; i++){
 
 		let y = randomBR(1, 2)
 
 		if(y == 1){
 
-			let z = [mlbTotals[i].ovTeam, mlbTotals[i].overs]
+			let z = [nbaTotalsOpt[i].ovTeam, nbaTotalsOpt[i].overs]
 
 			clientOpp.push(z)
 
 		}else{
 
-			let z = [mlbTotals[i].unTeam, mlbTotals[i].unders]
+			let z = [nbaTotalsOpt[i].unTeam, nbaTotalsOpt[i].unders]
 
 			clientOpp.push(z)
 
