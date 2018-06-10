@@ -487,6 +487,8 @@ function ClientObj(){
 			var rev4;
 			var rev5;
 			var rev6;
+
+			console.log([revWinners, revLosers])
 			
 			for(z=0; z<this.sportsBets[i].teams[0].length; z++){
 
@@ -557,6 +559,8 @@ function ClientObj(){
 							}
 
 						}
+
+
 
 						if(this.sportsBets[i].teams[0][z][0].spread){
 
@@ -649,7 +653,9 @@ function ClientObj(){
 						}	
 					}
 
-				}else if(this.sportsBets.type == "2 team reverse" || this.sportsBets.type == "3 team reverse" || this.sportsBets.type == "4 team reverse"){
+				}else if(this.sportsBets[i].type == "2 team reverse" || this.sportsBets[i].type == "3 team reverse" || this.sportsBets[i].type == "4 team reverse"){
+
+					console.log("in the if")
 
 
 
@@ -722,8 +728,11 @@ function ClientObj(){
 						}else{
 
 							console.log("team has no result")
-						}	
+						}
+
+
 					}
+
 
 				}
 			}
@@ -1283,7 +1292,7 @@ function ClientObj(){
 					
 					}else{
 
-						rev1 = (0 - this.sportsBets[i].amount) * 2.2
+						rev1 = (0 - this.sportsBets[i].amount) * 1.2
 
 					}
 
@@ -1320,7 +1329,7 @@ function ClientObj(){
 
 							}else{
 
-								rev2 = this.sportsBets[i].amount * ((revLosers[1][0].moneyLine/100) -1) + this.sportsBets[i].amount * (revLosers[0][0].moneyLine/100)
+								rev2 = this.sportsBets[i].amount * ((revLosers[1][0].moneyLine/100) -1) + this.sportsBets[i].amount * (revLosers[1][0].moneyLine/100)
 							}
 
 						}else{
@@ -1348,49 +1357,55 @@ function ClientObj(){
 					
 					}else{
 
-						rev2 = (0 - this.sportsBets[i].amount) * 2.2
+						rev2 = (0 - this.sportsBets[i].amount) * 1.2
 
 					}
 
 				}
 
-				if(revWinners[1][2] == "sides"){
+				if(revLosers[0][2] == "sides"){
+					
 
-					if(revWinners[1][0].moneyLine > 0){
+					if(revLosers[0][0].moneyLine > 0){
 
-						if(revLosers[2][2] == "sides"){
+						if(revLosers[1][2] == "sides"){
 						
-							if(revLosers[2][0].moneyLine > 0){
+							if(revLosers[1][0].moneyLine > 0){
 
-								rev3 = (((revWinners[1][0].moneyLine/100) -1) * this.sportsBets[i].amount) - this.sportsBets[i].amount
+								rev3 = (((revLosers[0][0].moneyLine/100) -1) * this.sportsBets[i].amount) - this.sportsBets[i].amount
+								
 
 							}else{
 
-								rev3 = (this.sportsBets[i].amount * (revWinners[1][0].moneyLine/100)) + (this.sportsBets[i].amount * (revLosers[2][0].moneyLine/100) * 2)
-
+								rev3 = (this.sportsBets[i].amount * (revLosers[0][0].moneyLine/100)) + (this.sportsBets[i].amount * (revLosers[1][0].moneyLine/100) * 2)
+								
 							}
 
 						}else{
 
-							rev3 = (((revWinners[1][0].moneyLine/100) -1) * this.sportsBets[i].amount) - ((this.sportsBets[i].amount * 1.1) * 2)
+							rev3 = (((revLosers[0][0].moneyLine/100) -1) * this.sportsBets[i].amount) - ((this.sportsBets[i].amount * 1.1) * 2)
+							
 						}
 					
 					}else{
 
-						if(revLosers[2][2] == "sides"){
+						if(revLosers[1][2] == "sides"){
 
-							if(revLosers[2][0].moneyLine > 0){
+							if(revLosers[1][0].moneyLine > 0){
 
 								rev3 = 0 - this.sportsBets[i].amount
+								
 
 							}else{
 
-								rev3 = this.sportsBets[i].amount * ((revLosers[2][0].moneyLine/100) -1) + this.sportsBets[i].amount * (revLosers[2][0].moneyLine/100)
+								rev3 = this.sportsBets[i].amount * ((revLosers[1][0].moneyLine/100) -1) + this.sportsBets[i].amount * (revLosers[1][0].moneyLine/100)
+								
 							}
 
 						}else{
 
 							rev3 = (.1 * this.sportsBets[i].amount) - (this.sportsBets[i].amount * 1.1)
+							
 						}
 
 
@@ -1398,7 +1413,30 @@ function ClientObj(){
 					}
 
 
+				}else{
+
+					if(revLosers[1][2] == "sides"){
+
+							if(revLosers[1][0].moneyLine > 0){
+
+								rev3 = (0 - (this.sportsBets[i].amount * 1.1)) - (this.sportsBets[i].amount)
+								
+
+							}else{
+
+								rev3 = (0 - (this.sportsBets[i].amount * 1.1)) + (this.sportsBets[i].amount * (revLosers[1][0].moneyLine/100))
+								
+							}
+
+						}else{
+
+							rev3 = 0 - (this.sportsBets[i].amount * 2.2)
+							
+						}
+
+
 				}
+
 
 				this.bankroll = this.bankroll + rev1 + rev2 + rev3
 			
@@ -1464,7 +1502,7 @@ function ClientObj(){
 					
 					}else{
 
-						rev1 = (0 - this.sportsBets[i].amount) * 2.2
+						rev1 = this.sportsBets[i].amount + (0 - this.sportsBets[i].amount) * 2.2
 
 					}
 
@@ -1472,7 +1510,7 @@ function ClientObj(){
 
 				this.bankroll += rev1
 
-			}else if(revWinners == 1 && revLosers == 0){
+			}else if(revWinners.length == 1 && revLosers.length == 0){
 
 				if(revWinners[0][2] == "sides"){
 
@@ -1859,7 +1897,7 @@ function ClientObj(){
 
 				}else{
 
-					rev2 = this.sportsBets[i] + (0 - (this.sportsBets[i].amount * 2.2))
+					rev2 = this.sportsBets[i].amount + (0 - (this.sportsBets[i].amount * 2.2))
 				}
 
 				if(revWinners[1][2] == "sides" && revLosers[0][2] == "sides"){
@@ -1907,8 +1945,10 @@ function ClientObj(){
 
 				}else{
 
-					rev3 = this.sportsBets[i] + (0 - (this.sportsBets[i].amount * 2.2))
+					rev3 = this.sportsBets[i].amount + (0 - (this.sportsBets[i].amount * 2.2))
 				}
+
+				console.log([rev1, rev2, rev3])
 
 				this.bankroll = this.bankroll + rev1 + rev2 + rev3
 			}
@@ -2263,6 +2303,160 @@ function ClientObj(){
 
 			}
 
+			if(revWinners.length == 3 && revLosers.length == 0){
+
+				if(revWinners[0][2] == "sides" && revWinners[1][2] == "sides"){
+
+					if(revWinners[0][0].moneyLine > 0 && revWinners[1][0].moneyLine > 0){
+
+						rev1 = (this.sportsBets[i].amount * (revWinners[0][0].moneyLine/100) * 2) + (this.sportsBets[i].amount * (revWinners[1][0].moneyLine/100) * 2) 
+					
+					}else if(revWinners[0][0].moneyLine < 0 && revWinners[1][0].moneyLine < 0){
+
+						rev1 = this.sportsBets[i].amount * 4
+					
+					}else if(revWinners[0][0].moneyLine < 0 && revWinners[1][0].moneyLine > 0){
+
+						rev1 = (this.sportsBets[i].amount * 2) + (this.sportsBets[i].amount * (revWinners[1][0].moneyLine/100) * 2)
+					
+					}else{
+
+						rev1 = (this.sportsBets[i].amount * 2) + (this.sportsBets[i].amount * (revWinners[0][0].moneyLine/100) * 2)
+					}
+
+				}else if(revWinners[0][2] == "sides"){
+
+					if(revWinners[0][0].moneyLine > 0){
+
+						rev1 = (this.sportsBets[i].amount * (revWinners[0][0].moneyLine/100) * 2) + (this.sportsBets[i].amount * 2)
+
+					}else{
+
+						rev1 = this.sportsBets[i].amount * 4
+
+					}
+				
+				}else if(revWinners[1][2] == "sides"){
+
+					if(revWinners[1][0].moneyLine > 0){
+
+						rev1 = (this.sportsBets[i].amount * (revWinners[1][0].moneyLine/100) * 2) + (this.sportsBets[i].amount * 2)
+
+					}else{
+
+						rev1 = this.sportsBets[i].amount * 4
+
+					}
+
+				}else{
+
+					rev1 = this.sportsBets[i].amount * 4
+
+				}
+
+				if(revWinners[0][2] == "sides" && revWinners[2][2] == "sides"){
+
+					if(revWinners[0][0].moneyLine > 0 && revWinners[2][0].moneyLine > 0){
+
+						rev2 = (this.sportsBets[i].amount * (revWinners[0][0].moneyLine/100) * 2) + (this.sportsBets[i].amount * (revWinners[2][0].moneyLine/100) * 2) 
+					
+					}else if(revWinners[0][0].moneyLine < 0 && revWinners[2][0].moneyLine < 0){
+
+						rev2 = this.sportsBets[i].amount * 4
+					
+					}else if(revWinners[0][0].moneyLine < 0 && revWinners[2][0].moneyLine > 0){
+
+						rev2 = (this.sportsBets[i].amount * 2) + (this.sportsBets[i].amount * (revWinners[2][0].moneyLine/100) * 2)
+					
+					}else{
+
+						rev2 = (this.sportsBets[i].amount * 2) + (this.sportsBets[i].amount * (revWinners[0][0].moneyLine/100) * 2)
+					}
+
+				}else if(revWinners[0][2] == "sides"){
+
+					if(revWinners[0][0].moneyLine > 0){
+
+						rev2 = (this.sportsBets[i].amount * (revWinners[0][0].moneyLine/100) * 2) + (this.sportsBets[i].amount * 2)
+
+					}else{
+
+						rev2 = this.sportsBets[i].amount * 4
+
+					}
+				
+				}else if(revWinners[2][2] == "sides"){
+
+					if(revWinners[2][0].moneyLine > 0){
+
+						rev2 = (this.sportsBets[i].amount * (revWinners[2][0].moneyLine/100) * 2) + (this.sportsBets[i].amount * 2)
+
+					}else{
+
+						rev2 = this.sportsBets[i].amount * 4
+
+					}
+
+				}else{
+
+					rev2 = this.sportsBets[i].amount * 4
+
+				}
+
+				if(revWinners[1][2] == "sides" && revWinners[2][2] == "sides"){
+
+					if(revWinners[1][0].moneyLine > 0 && revWinners[2][0].moneyLine > 0){
+
+						rev3 = (this.sportsBets[i].amount * (revWinners[1][0].moneyLine/100) * 2) + (this.sportsBets[i].amount * (revWinners[2][0].moneyLine/100) * 2) 
+					
+					}else if(revWinners[1][0].moneyLine < 0 && revWinners[2][0].moneyLine < 0){
+
+						rev3 = this.sportsBets[i].amount * 4
+					
+					}else if(revWinners[1][0].moneyLine < 0 && revWinners[2][0].moneyLine > 0){
+
+						rev3 = (this.sportsBets[i].amount * 2) + (this.sportsBets[i].amount * (revWinners[2][0].moneyLine/100) * 2)
+					
+					}else{
+
+						rev3 = (this.sportsBets[i].amount * 2) + (this.sportsBets[i].amount * (revWinners[1][0].moneyLine/100) * 2)
+					}
+
+				}else if(revWinners[1][2] == "sides"){
+
+					if(revWinners[1][0].moneyLine > 0){
+
+						rev3 = (this.sportsBets[i].amount * (revWinners[1][0].moneyLine/100) * 2) + (this.sportsBets[i].amount * 2)
+
+					}else{
+
+						rev3 = this.sportsBets[i].amount * 4
+
+					}
+				
+				}else if(revWinners[2][2] == "sides"){
+
+					if(revWinners[2][0].moneyLine > 0){
+
+						rev3 = (this.sportsBets[i].amount * (revWinners[2][0].moneyLine/100) * 2) + (this.sportsBets[i].amount * 2)
+
+					}else{
+
+						rev3 = this.sportsBets[i].amount * 4
+
+					}
+
+				}else{
+
+					rev3 = this.sportsBets[i].amount * 4
+
+				}
+
+				this.bankroll = this.bankroll + rev1 + rev2 + rev3
+			}
+
+
+
 			if(revWinners.length == 4 && revLosers.length == 0){
 
 				if(revWinners[0][2] == "sides" && revWinners[1][2] == "sides"){
@@ -2560,8 +2754,6 @@ function ClientObj(){
 				}
 
 				this.bankroll = this.bankroll + rev1 + rev2 + rev3 + rev4 + rev5 + rev6
-
-
 
 
 			}		

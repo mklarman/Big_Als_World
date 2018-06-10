@@ -248,6 +248,25 @@ Sports Betting:
 9) Wagers are graded, accounts debited/credited
 
 
+Users will be stepping into the shoes of a bookie.  I want to archive each days action for the user so they can go back and see how they did on any given day.  Also the user will see the stats of each client, their win/loss reports which will include how the client has done overall and how have they done with each type of wager they have placed.  Give them some avg, stats like avg wager placed and avg win/loss per day.  Also, have the user see how they stand overall vs each type of wager across all clients.  How much money have they won or lost vs each type of wager across all clients.
+
+The results page should show the graded wagers with the red or green figure next to them with the "+" or "-".  Then a daily figure at the bottom.
+
+The day before will be the default showing, but have a calendar where the user can click on whatever day they wish and see the results.
+
+Let the user create leagues where they see whose book makes more money over the course of a sports season (use a particular sport), or for a determined amount of time where all sports are used.  A league admin creates the league.  Need to know how many people in the league.  Start date and end date for the league.  Customize the clients for each book, how many exotic clients?  How many straight?  How many mixed?  League rankings, ranking the books by profit.  So they can see where they stand, so a league home page.
+
+Front end will be clean and neat with the display of the information.  
+
+Right now am in the middle of debugging reverse scoring, next week will be finished with the scoring function, then need to add in a protection of putting the same team twice in an exotic in the genWager function.
+
+What to save in the DB:
+
+the daily results of the books, the league data, the users sports book(starting with $5,000), each users client list.
+
+Users will fish for clients.  Clients will have a secret password attached to them, there will be an imput box where the user will enter words to see if they can match any of the secret passwords.  If they match it then they get that client.
+
+
 
 
 
