@@ -266,6 +266,28 @@ the daily results of the books, the league data, the users sports book(starting 
 
 Users will fish for clients.  Clients will have a secret password attached to them, there will be an imput box where the user will enter words to see if they can match any of the secret passwords.  If they match it then they get that client.
 
+PAGES:
+
+Users will need a profile page:  Shares details from their sportsbook, some personal info.  Their positions in the games tonight.
+
+Users will also need an action sheet.  That will show the action to the user.  Users can sift through old action sheets that have been graded so they can see how they did on any given day, they current action is not graded yet of course.  On the current action sheet will list the action by client name, under the client name will be the bet imformation: amount, type, teams.
+
+What is the set-up to the action page?  The sports odds page?  The user will have to click a button to generate their sports action from their client list.  When that button is pressed, the action will be generated and saved and displayed for the user.  That button will say something like my book.
+
+For the league play: the administrator of the league will set the rosters.  How many clients will each player have?  How many of each type of client?  The bets will come in blocks.  Blocks of straight, reverse, and teasers are 3 clients, blocks for parlays will be four long.  Or maybe let them say how many clients and then custom build them, let them say how many of each bet type.
+
+From day to day, the player can log into the league and to his roster and set the stakes of the clients.  This is where the client can influence outcome.  If they want to set their exotic players high or low they can.  The higher you set the exotic, the more the client can win if they do win.
+
+Leagues can be played as a running tally, or in head-up matchups with a sports book competing against another in a battle of profits for that day.
+
+League pages
+Profile Page
+Action sheet
+Odds to games
+Client Fishing
+Home page
+Explanation page
+
 
 
 
