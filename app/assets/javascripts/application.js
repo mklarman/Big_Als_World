@@ -724,7 +724,6 @@ function ClientObj(){
 							}
 						}
 					}
-					console.log([straightW, straightL])
 
 			}else{
 
@@ -1146,6 +1145,8 @@ function ClientObj(){
 			if(teasLosers.length > 0){
 
 				if(this.sportsBets[i].type == "2 team teaser"){
+
+					console.log("2 team tease")
 
 					this.bankroll -= (this.sportsBets[i].amount * 1.2)
 					
@@ -3532,8 +3533,8 @@ function setTrial(){
 	client1.possWager = ["2 team teaser"]
 
 	client1.genWager()
-	client1.genWager()
-	client1.genWager()
+	// client1.genWager()
+	// client1.genWager()
 
 
 	addScores()
