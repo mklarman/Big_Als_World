@@ -337,6 +337,46 @@ FourTeamGrade
 FiveTeamGrade
 ClientTotals
 
+Bookies
+Clients
+Wager Models
+Client List
+
+BOOKIES
+has_one Client List
+
+
+The functions that perform the actions can be done on the webpage(js), just need to capture the data in a form.
+
+Users will have client lists, to make bets:
+
+acces current_users client list via a loop:
+
+for each client:
+
+set how many wagers they will make;
+
+select wager type and amount
+
+fill in teams and spreads
+
+push wager to an array
+
+to grade wagers:
+
+access users client list, loop through it, for each client: loop through the array for the wagers.  For each wager, read the wager type and apply the appropriate grading principles.  Capture the result and settle with client BR and users sports book.
+
+What does Client need saved to the database:
+
+first name
+last name
+city
+type: (will define how many wagers they will make)
+stakes: how much they bet per wager
+bankroll: integer
+
+wagers will take a client ID, so to access wagers you access the client list, loop it, and for each client access all wagers they have made by looping and pulling out the proper created at fields of the wagers
+
 
 
 
