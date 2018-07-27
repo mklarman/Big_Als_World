@@ -1,0 +1,8 @@
+<% current_user.clients.each do |c| %>
+	
+	<div><%= c.first_name %></div>
+	<div><%= c.last_name %></div>
+	<div><%= c.bankroll %></div>
+	<div><%= c.id %></div>
+
+<% end %>

@@ -375,7 +375,7 @@ type: (will define how many wagers they will make)
 stakes: how much they bet per wager
 bankroll: integer
 
-wagers will take a client ID, so to access wagers you access the client list, loop it, and for each client access all wagers they have made by looping and pulling out the proper created at fields of the wagers
+wagers will take a client ID, so to access wagers you access the client list, loop it, and for each client access all wagers they have made by looping and pulling out the proper created at fields of the wagers.
 
 
 

@@ -6,5 +6,8 @@ Rails.application.routes.draw do
 
   root to: "gamblers#index"
 
+  resources :clients
+  resources :wagers
+
 
 end

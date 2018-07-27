@@ -1,0 +1,14 @@
+
+
+<%= form_for @client do |c| %>
+	
+	<%= c.hidden_field :user_id, :value => current_user.id %>
+	<div>First Name: <%= c.text_field :first_name %></div>
+	<div>Last Name: <%= c.text_field :last_name %></div>
+	<div>Bankroll: <%= c.text_field :bankroll %></div>
+	<div>Style: <%= c.text_field :style %></div>
+	<div>Stakes: <%= c.text_field :stakes %></div>
+	<div><%= c.submit %></div>
+
+
+<% end %>
