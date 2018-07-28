@@ -1,8 +1,24 @@
 <% current_user.clients.each do |c| %>
 	
-	<div><%= c.first_name %></div>
-	<div><%= c.last_name %></div>
-	<div><%= c.bankroll %></div>
-	<div><%= c.id %></div>
+	<% @client = c.id %>
+	
+	<%= form_for @wager do |w| %>
+
+		<%= w.hidden_field :client_id, :value => @client %>
+		<%= w.text_field :bet_type, :value => @bet_type %>
+		<%= w.text_field :bet_amount, :value => @bet_amount %>
+		<%= w.text_field :team_one, :value => @team_one %>
+		<%= w.text_field :spread_one, :value => @spread_one %>
+		<%= w.text_field :team_two, :value => @team_two %>
+		<%= w.text_field :spread_two, :value => @spread_two %>
+		<%= w.submit %>
+
+	<% end %>
+
+<% end %>
+
+<% current_user.clients.wagers.each do |w| %>
+
+	<%= w.team_one %>
 
 <% end %>

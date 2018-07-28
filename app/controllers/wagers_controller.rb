@@ -5,6 +5,8 @@ class WagersController < ApplicationController
 		@user = current_user
 	end
 
+	def create
+
 
 
 

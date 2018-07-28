@@ -20,6 +20,21 @@ class ClientsController < ApplicationController
 		end
 	end
 
+	def show
+
+		@user = current_user
+		@wager = Wager.new
+		@team_one = "Baltimore"
+		@team_two = "Denver"
+		@spread_one = 7
+		@spread_two = -4.5
+		@bet_type = "Teaser"
+		@bet_amount = 100
+		@client
+	
+	end
+
+
 
 
 
