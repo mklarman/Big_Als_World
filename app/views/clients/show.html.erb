@@ -1,6 +1,8 @@
 <% current_user.clients.each do |c| %>
 	
 	<% @client = c.id %>
+
+	<%= @client %>
 	
 	<%= form_for @wager do |w| %>
 
@@ -17,8 +19,45 @@
 
 <% end %>
 
-<% current_user.clients.wagers.each do |w| %>
 
-	<%= w.team_one %>
+<div>
+
+<input id="submitButton" type="submit" value="Action" >
+
+</div>
+
+<%# current_user.clients.each do |c| %>
+	
+	<%# current_user.clients[c.id].wagers.each do |w| %>
+
+		<%#= w.bet_type %>
+		<%#= w.team_one %>
+		<%#= w.team_two %>
+
+	<%# end %>
+
+
+<%# end %>
+
+<% current_user.clients.each do |c| %>
+
+	<% @array_id = c.id + (-1) %>
+
+	<% current_user.clients[@array_id].wagers.each do |w| %>
+
+		<div>
+			
+			<div><%= w.bet_amount %></div>
+			<div><%= w.bet_type %></div>
+			<div><%= w.team_one %>
+				<%= w.spread_one %></div>
+			<div><%= w.team_two %>
+				<%= w.spread_two %></div>
+		
+		</div>
+
+	<% end %>
 
 <% end %>
+ 
+ 

@@ -7,6 +7,31 @@ class WagersController < ApplicationController
 
 	def create
 
+		user = current_user
+		wager = Wager.new(wager_params)
+		@client
+		
+		if wager.save
+			
+			redirect_to new_client_path
+  		else
+  	  		render new_user_registration_path
+
+  	  	end 
+			
+	end
+
+	def show
+
+		@wager = Wager.find_by_id(parmas[:id])
+
+
+
+
+
+
+	end
+
 
 
 
