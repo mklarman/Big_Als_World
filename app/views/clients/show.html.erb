@@ -1,3 +1,4 @@
+
 <% current_user.clients.each do |c| %>
 	
 	<% @client = c.id %>
@@ -16,6 +17,29 @@
 		<%= w.submit %>
 
 	<% end %>
+
+	<div>
+
+		<input class="submitButton" type="submit" value="Action" >
+
+	</div>
+
+	<script>
+
+		var submitButton = document.getElementsByClassName("submitButton")
+
+		for(i=0; i<submitButton.length; i++){
+
+			submitButton[i].addEventListener("click", function(){
+			var submitWager = document.getElementById("new_wager")
+			submitWager.submit()
+
+			})
+		}
+
+
+	</script>
+
 
 <% end %>
 
@@ -39,11 +63,12 @@
 
 <%# end %>
 
-<% current_user.clients.each do |c| %>
+<% current_user.clients.each do |client| %>
 
-	<% @array_id = c.id + (-1) %>
+	<div><%= client.first_name %>
+		<%= client.last_name %>
 
-	<% current_user.clients[@array_id].wagers.each do |w| %>
+	<% client.wagers.each do|w| %>
 
 		<div>
 			
@@ -56,7 +81,10 @@
 		
 		</div>
 
+
 	<% end %>
+
+		
 
 <% end %>
  
