@@ -24,12 +24,19 @@ class ClientsController < ApplicationController
 
 		@user = current_user
 		@wager = Wager.new
-		@team_one = "Baltimore"
-		@team_two = "Denver"
-		@spread_one = 7
-		@spread_two = -4.5
-		@bet_type = "Teaser"
-		@bet_amount = 100
+		@team_one
+		@team_three
+		@team_four
+		@team_two
+		@team_five
+		@team_six
+		@team_seven
+		@team_eight
+		@team_nine
+		@spread_one
+		@spread_two
+		@bet_type
+		@bet_amount
 		@client
 	
 	end

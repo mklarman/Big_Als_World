@@ -1,3 +1,35 @@
+<% @team_one = "Baltimore" %>
+<% @team_two = "Philly" %>
+<% @team_three = "Pitt" %>
+<% @team_four = "Dallas" %>
+<% @team_five = "NY" %>
+<% @team_six = "USC" %>
+<% @team_seven = "Saints" %>
+<% @team_eight = "Tampa Bay" %>
+<% @team_nine = "San Fran" %>
+<% @client = current_user.clients[0].id %>
+
+<% @bettor = current_user.clients.sample %>
+<% @num_bets = [1, 2, 3].sample %>
+<%= @num_bets %>
+<% @wager.bet_type = "Parlay" %>
+
+<%= form_for @wager do |w| %>
+
+		<%= w.hidden_field :client_id, :value => @bettor.id, :id => "x"%>
+		<%= w.text_field :bet_type, :value => @bet_type %>
+		<%= w.text_field :bet_amount, :value => @bet_amount %>
+		<%= w.text_field :team_one, :value => @team_three %>
+		<%= w.text_field :spread_one, :value => @spread_one %>
+		<%= w.text_field :team_two, :value => @team_four %>
+		<%= w.text_field :spread_two, :value => @spread_two %>
+		<%= w.submit %>
+
+	<% end %>
+
+
+
+
 
 <% current_user.clients.each do |c| %>
 	
@@ -62,6 +94,8 @@
 
 
 <%# end %>
+
+<%= current_user.clients[1].first_name %>
 
 <% current_user.clients.each do |client| %>
 

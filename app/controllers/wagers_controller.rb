@@ -13,9 +13,9 @@ class WagersController < ApplicationController
 		
 		if wager.save
 			
-			redirect_to new_client_path
+			redirect_back(fallback_location: clients_path) 
   		else
-  	  		render new_user_registration_path
+  	  		render new_client_path
 
   	  	end 
 			
