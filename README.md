@@ -379,6 +379,29 @@ wagers will take a client ID, so to access wagers you access the client list, lo
 
 
 
+steps to making a wager:
+
+pick a random client from the current_user - erb
+grab this client's id and set it to a variable - erb
+decide how many wagers the client will make?
+ then have a function that fills in a wager:
+ -type
+ -amount
+ -teams
+
+ so, the argument is do I compute the betting data in js and capture results in the ruby forms, or do I do everything in ruby?
+
+ pages:
+
+ Home Page - sell the product, the game, descriptive of mood and theme.  Describe what the user will do: gather clients, back their bets, build your own sportsbook.  Also have the login on this page, but have a link to the sign up.  Once logged in, go to their profile page.
+
+ Profile Page - describes their sportsbook - cash total, number of clients, maybe give acces to client stats, also let them update their account.  On this page will be links to the days odds maybe and also their sheet.
+
+ Their sheet - shows the action for the day: Client Name, Bet Type, Bet Amount, teams, spreads.  This page should look like a pph page for the bookie login.  Also, on this page will be a link that brings them to a page where the wagers will be created and accepted(submitted by user) or passed on(refresh the page and generate another wager.)
+
+ Wager page - a middle div that displays the wager details with two buttons: book and pass.  This will allow the user to cycle through wagers and accept the wagers they want.
+
+ About page - explain the game, some strategies - money management
 
 
 
