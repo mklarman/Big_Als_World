@@ -14,19 +14,6 @@
 <%= @num_bets %>
 <% @wager.bet_type = "Parlay" %>
 
-<%= form_for @wager do |w| %>
-
-		<%= w.hidden_field :client_id, :value => @bettor.id, :id => "x"%>
-		<%= w.text_field :bet_type, :value => @bet_type %>
-		<%= w.text_field :bet_amount, :value => @bet_amount %>
-		<%= w.text_field :team_one, :value => @team_three %>
-		<%= w.text_field :spread_one, :value => @spread_one %>
-		<%= w.text_field :team_two, :value => @team_four %>
-		<%= w.text_field :spread_two, :value => @spread_two %>
-		<%= w.submit %>
-
-	<% end %>
-
 
 
 
@@ -50,13 +37,13 @@
 
 	<% end %>
 
-	<div>
+	<!-- <div>
 
 		<input class="submitButton" type="submit" value="Action" >
 
 	</div>
-
-	<script>
+ -->
+	<!-- <script>
 
 		var submitButton = document.getElementsByClassName("submitButton")
 
@@ -71,16 +58,14 @@
 
 
 	</script>
-
+ -->
 
 <% end %>
 
 
-<div>
 
-<input id="submitButton" type="submit" value="Action" >
+<button onclick="submitForms()">Action</button><br>
 
-</div>
 
 <%# current_user.clients.each do |c| %>
 	

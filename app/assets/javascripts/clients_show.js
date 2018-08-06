@@ -1,17 +1,21 @@
 
+	// var car = document.getElementById("button")
+	var submitWager = document.getElementById("new_wager")
+	
+	console.log(submitWager)
 
-	var submitWager = document.getElementsByClassName("new_wager")
-	var submitWager2 = document.getElementById("new_wager")
-	var submitButton = document.getElementById("submitButton")
-
-	console.log(submitWager.length)
-
-	submitButton.addEventListener("click", function(){
-
-		submitForms()
+	// for(i=0; i<submitWager.length; i++){
 
 
-	})
+	// 		console.log(submitWager[i])
+	// }
+
+	// car.addEventListener("click", function(){
+
+	// 	submitForms()
+
+
+	// })
 
 	function submitForms (){
 

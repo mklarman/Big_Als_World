@@ -404,7 +404,70 @@ decide how many wagers the client will make?
  About page - explain the game, some strategies - money management
 
 
+ Still to do:
 
+ show records by date; recall wagers by their date: created_at time stamp.
+
+ grade the wagers:  what is needed for grading:
+
+ 1) access to the wager details
+ 2) a score to the game
+ 3) boolean for true or false
+ 4) total details
+ 4) net result in $
+ 5) winner or loser tag.
+
+
+ have to craft a custom time stamp that collects the: day/month/year or maybe put a boolean into the form that starts at open and is changed to "closed" after being graded, then you can loop through the wagers of the clients and just apply grading functions to those who have an "open" boolean.  That's better than the time stamp.  Also need to add a net result field that will start at 0 and then be updated to reflect grading.
+
+ Everything has to be put on the wager form:
+
+ user_id
+ client_id
+ type
+ amount
+ teams
+ spreads
+ date
+ net_result
+ client_bankroll
+ user_bankroll
+ rating: winner or loser
+ graded
+
+ then when the user is sent to the update URL, on that page the code needs to be written to quantify all hidden fields and then those variables set to the values.
+
+ For teams best if you have a game mathup model.  This form is admin accesible only.  The form will collect:
+
+ date
+ sport
+ fav
+ underdog
+ fav_line
+ dog_line
+ fav_score
+ dog_score
+ fav_straight_bet
+ fav_two_teas
+ fav_three_teas
+ fav_five_teas
+ dog_straight_bet
+ dog_two_teas
+ dog_three_teas
+ dog_five_teas
+ updated
+
+ Once I update the matchup the next day, users then can grade their wagers.  The math for the grading will need to be on the pages.  Maybe can use the js.  This math has to be done on the page. It will only be the math for the reverses.  I'll have the teams, the scores, the spreads, the bet type, the bet amount.
+
+ The main features:
+
+ script for the user to generate wagers from their clients, one at a time with the user being bale to Book it or pass on it. After either choice a new wager pops up.  This allows the user the opportunity to be smart, back good wagers.
+
+ A place to grade the wagers.  Have a wager be found by :id and then access its teams and spreads and type and have the proper math applied and then set those values to variables that will be set in the form.
+
+ The sports book display.  Where the user will see all pending action and be able to see past action plus all kind of up to date stats.
+
+ A place to fish for clients.  Where users can go and try and pick up clients.  Enter in sports/gambling related words into an input box and if it matches any, the create new user form is called the values are sealed in from the variables that were random, the user_id is called and put in the form, and then the form is submitted automatically.  And the client is created.
 
 
 <!-- Users/Gamblers will play vs Big Al in various casino games.  I want to keep stats for the user in each game:  their win/loss, how many games have they played, etc.  So each game will need a model and a form that gets filled out.  Stats will need to be user id specific and be sent to a form that submits to the database, I need to be able to use notation like: current_user.blackjack to get the blackjack stats.  Possible games: blackjack, keno, maybe hi/lo, find a way to integrate the lottery software.  Also have a forum with posts about gambling and pop culture.
